@@ -43,8 +43,11 @@ def get_coordinates_list(df):
 
 if __name__ == "__main__":
     from cities_with_max_hotels import cities_with_max_amount_of_hotel
-    from preparing_data import (cleaning_dataframe,
-                                func_to_create_dataframe_from_csv, unzip)
+    from preparing_data import (
+        cleaning_dataframe,
+        func_to_create_dataframe_from_csv,
+        unzip,
+    )
 
     unzip("hotels.zip")
     f = func_to_create_dataframe_from_csv("unpacked_files")

@@ -1,17 +1,27 @@
 import click
 
-from project_scripts.data_assessment.cities_with_max_hotels import \
-    cities_with_max_amount_of_hotel
+from project_scripts.data_assessment.cities_with_max_hotels import (
+    cities_with_max_amount_of_hotel,
+)
 from project_scripts.data_assessment.preparing_data import (
-    cleaning_dataframe, func_to_create_dataframe_from_csv, unzip)
+    cleaning_dataframe,
+    func_to_create_dataframe_from_csv,
+    unzip,
+)
 from project_scripts.data_processing.addresses import (
-    create_csv_file_with_addresses, geopy_address,
-    save_df_in_csv_less_than_100_notes)
+    create_csv_file_with_addresses,
+    geopy_address,
+    save_df_in_csv_less_than_100_notes,
+)
 from project_scripts.data_processing.get_temperatures import get_temperature
 from project_scripts.data_processing.getting_coordinates import (
-    center_coordinates, get_coordinates_list)
+    center_coordinates,
+    get_coordinates_list,
+)
 from project_scripts.data_processing.plots_min_max_temp import (
-    graph_with_max_temperature, graph_with_min_temperature)
+    graph_with_max_temperature,
+    graph_with_min_temperature,
+)
 
 
 # from project_scripts.post_processing import
