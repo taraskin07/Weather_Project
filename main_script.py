@@ -1,4 +1,5 @@
 import click
+import json
 
 from project_scripts.data_assessment.cities_with_max_hotels import (
     cities_with_max_amount_of_hotel,
@@ -11,7 +12,6 @@ from project_scripts.data_assessment.preparing_data import (
 from project_scripts.data_processing.addresses import (
     create_csv_file_with_addresses,
     geopy_address,
-    save_df_in_csv_less_than_100_notes,
 )
 from project_scripts.data_processing.get_temperatures import get_temperature
 from project_scripts.data_processing.getting_coordinates import (
@@ -71,24 +71,33 @@ def main(path_to_input_data, path_to_output_data, max_workers_amount):
     try:
         max_workers_amount = int(max_workers_amount)
     except ValueError:
-        print("Количество потоков должно быть числом")
+        print("Количество потоков должно быть числом!")
 
     # Ввели в консоли путь до файла, распаковываем архив - project_scripts.data_assessment.preparing_data
     unzip(path_to_input_data)
     # Читаем файлы и создаем из них объект dataframe - project_scripts.data_assessment.preparing_data
     df = func_to_create_dataframe_from_csv("unpacked_files")
+    # import os
+    # os.makedirs('debug', exist_ok=True)
+    # df.to_csv('debug/func_to_create_dataframe_from_csv1.csv', sep='\t', encoding='utf-8')
 
     # Убираем неправильные записи из dataframe - project_scripts.data_assessment.preparing_data
     df = cleaning_dataframe(df)
+    # df.to_csv('debug/cleaning_dataframe2.csv', sep='\t', encoding='utf-8')
 
     # Ищем города, в которых больше всего отелей в отдельной стране - project_scripts.data_assessment.cities_with_max_hotels
     df = cities_with_max_amount_of_hotel(df)
-
+    # df.to_csv('debug/cities_with_max_amount_of_hotel3.csv', sep='\t', encoding='utf-8')
+    # print(f'Длина списка городов с отелями, где их больше всего: {len(df)}')
     # Помещаем в переменную список с коордниатами - project_scripts.data_processing.getting_coordinates
     coordinates_list = get_coordinates_list(df)
+    # print(f'Длина списка координат центров городов с отелями, где их больше всего: {len(coordinates_list)}')
+    # with open('debug/coordinates_list4.json', 'w+') as f:
+    #     json.dump(coordinates_list, f)
 
     # По списку координат получаем список адресов в виде dataframe - project_scripts.data_processing.addresses
     df_lon_lat_address = geopy_address(coordinates_list, max_workers_amount)
+    # df_lon_lat_address.to_csv('debug/df_lon_lat_address5.csv', sep='\t', encoding='utf-8')
 
     # В указанную через консоль папку помещаем требуемые csv файлы с адресами, меньше 100 записей, все в подпапках - project_scripts.data_processing.addresses
     create_csv_file_with_addresses(df, df_lon_lat_address, path_to_output_data)

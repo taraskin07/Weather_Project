@@ -1,6 +1,5 @@
 import os
 from concurrent.futures import ThreadPoolExecutor
-
 import numpy as np
 import pandas as pd
 from geopy import OpenMapQuest
@@ -10,12 +9,11 @@ from geopy.extra.rate_limiter import RateLimiter
 def geopy_address(coordinates_list, workers_amount):
     """
     Функция для получения адреса по координатам. Позволяет задать количество потоков.
-    :param threads_amount: количество потоков для параллельной обработки данных
+    :param workers_amount: количество потоков для параллельной обработки данных
     :param coordinates_list: список с координатами
     :return df: dataframe с адресом и координатами
     """
     geolocator = OpenMapQuest(api_key="G8uzA4xdsG5B0uLcekeCowprs41bkZlb")
-    # geolocator = Photon(user_agent="measurements")
 
     # Устанавливаем задержку в секундах, чтобы избежать Too Many Requests 429 error
     delay = 1 / 20
@@ -23,7 +21,6 @@ def geopy_address(coordinates_list, workers_amount):
 
     with ThreadPoolExecutor(max_workers=workers_amount) as th:
         locations = dict(th.map(geocode, coordinates_list))
-    # print(locations)
     # Словарь с координатами и адресом преобразуем в DataFrame
     df = pd.DataFrame(
         locations.values(), index=locations.keys(), columns=["Latitude", "Longitude"]

@@ -1,10 +1,10 @@
 import time
 from datetime import date, datetime, timedelta
-
+import json
 import requests
 
 
-def get_temperature(dict_city_lat_long, app_id="G8uzA4xdsG5B0uLcekeCowprs41bkZlb"):
+def get_temperature(dict_city_lat_long, app_id="2bb1a0368b668b3ce5451b54f1ab78d9"):
     """
     Функция получает для центров городов с максимальным количеством отелей(по заданию) погоду:
         - за предыдущие 5 дней;
@@ -12,186 +12,184 @@ def get_temperature(dict_city_lat_long, app_id="G8uzA4xdsG5B0uLcekeCowprs41bkZlb
     - текущие значения;
      через API сайта https://api.openweathermap.org/
     :param dict_city-lat_long: словарь с городами и их координатами
-    :param api_key: API ключ сайта https://api.openweathermap.org/
+    :param app_id: API ключ сайта https://api.openweathermap.org/
     :return min_temperature, max_temperature:
     """
-    days_before = date.today() - timedelta(1)
-    days_before_1 = int(time.mktime(days_before.timetuple()))
+    # Определяем дату в нужном формате, предыдущий день
+    days_before_1dt = date.today() - timedelta(days=1)
+    # Конвертируем время в формат, нужный при обращении к One Call API(openweathermap.org/)
+    days_before_1 = int(time.mktime(days_before_1dt.timetuple()))
 
-    days_before = date.today() - timedelta(days=2)
-    days_before_2 = int(time.mktime(days_before.timetuple()))
+    # То же и для предыдущих дней
+    days_before_2dt = date.today() - timedelta(days=2)
+    days_before_2 = int(time.mktime(days_before_2dt.timetuple()))
 
-    days_before = date.today() - timedelta(days=3)
-    days_before_3 = int(time.mktime(days_before.timetuple()))
+    days_before_3dt = date.today() - timedelta(days=3)
+    days_before_3 = int(time.mktime(days_before_3dt.timetuple()))
 
-    days_before = date.today() - timedelta(days=4)
-    days_before_4 = int(time.mktime(days_before.timetuple()))
+    days_before_4dt = date.today() - timedelta(days=4)
+    days_before_4 = int(time.mktime(days_before_4dt.timetuple()))
 
-    days_before = date.today() - timedelta(days=5)
-    days_before_5 = int(time.mktime(days_before.timetuple()))
-
+    # Будем возвращать словари с кортежем {(Страна, Город): {даты:температуры}}
     min_temperature = dict()
     max_temperature = dict()
 
+    # Обращение к One Call API(openweathermap.org/)
     api_url = "https://api.openweathermap.org/data/2.5/onecall"
 
+    # Информацию берем из словаря с городами и их координатами
     for city, lat_long in dict_city_lat_long.items():
         lat = lat_long[0]
         lon = lat_long[1]
 
-        params = {"lat": lat, "lon": lon, "appid": app_id, "units": "metric"}
+        params = {
+            "lat": lat,
+            "lon": lon,
+            "appid": app_id,
+            "units": "metric",
+            "exclude": "minutely, alerts",
+        }
 
         try:
             if requests.get(api_url, params=params):
+                # Значения температуры для текущего дня и прогноз на 5 дней
                 current_and_forecast_weather = requests.get(api_url, params=params)
+                current_and_forecast_data = current_and_forecast_weather.json()
+
+                # Значения температуры для предыдущих дней
                 previous_1_day = requests.get(
                     f"{api_url}/timemachine", params={**params, **{"dt": days_before_1}}
                 )
+                data_1_day_before = previous_1_day.json()
+
                 previous_2_days = requests.get(
                     f"{api_url}/timemachine", params={**params, **{"dt": days_before_2}}
                 )
+                data_2_days_before = previous_2_days.json()
+
                 previous_3_days = requests.get(
                     f"{api_url}/timemachine", params={**params, **{"dt": days_before_3}}
                 )
+                data_3_days_before = previous_3_days.json()
+
                 previous_4_days = requests.get(
                     f"{api_url}/timemachine", params={**params, **{"dt": days_before_4}}
                 )
-                previous_5_days = requests.get(
-                    f"{api_url}/timemachine", params={**params, **{"dt": days_before_5}}
+                data_4_days_before = previous_4_days.json()
+
+                # Записываем в переменные необходимые даты и находим минимальные/максимальные температуры для каждого дня
+                four_days_before = days_before_4dt.strftime("%Y-%m-%d")
+                min_temp_four_days_before = min(
+                    [t["temp"] for t in data_4_days_before["hourly"]]
+                )
+                max_temp_four_days_before = max(
+                    [t["temp"] for t in data_4_days_before["hourly"]]
                 )
 
-                current_and_forecast_data = current_and_forecast_weather.json()
-                data_1_day_before = previous_1_day.json()
-                data_2_days_before = previous_2_days.json()
-                data_3_days_before = previous_3_days.json()
-                data_4_days_before = previous_4_days.json()
-                data_5_days_before = previous_5_days.json()
+                three_days_before = days_before_3dt.strftime("%Y-%m-%d")
+                min_temp_three_days_before = min(
+                    [t["temp"] for t in data_3_days_before["hourly"]]
+                )
+                max_temp_three_days_before = max(
+                    [t["temp"] for t in data_3_days_before["hourly"]]
+                )
+
+                two_days_before = days_before_2dt.strftime("%Y-%m-%d")
+                min_temp_two_days_before = min(
+                    [t["temp"] for t in data_2_days_before["hourly"]]
+                )
+                max_temp_two_days_before = max(
+                    [t["temp"] for t in data_2_days_before["hourly"]]
+                )
+
+                day_before = days_before_1dt.strftime("%Y-%m-%d")
+                min_temp_day_before = min(
+                    [t["temp"] for t in data_1_day_before["hourly"]]
+                )
+                max_temp_day_before = max(
+                    [t["temp"] for t in data_1_day_before["hourly"]]
+                )
+
+                today = date.today().strftime("%Y-%m-%d")
+                min_temp_today = current_and_forecast_data["daily"][0]["temp"]["min"]
+                max_temp_today = current_and_forecast_data["daily"][0]["temp"]["max"]
+
+                next_day = datetime.utcfromtimestamp(
+                    current_and_forecast_data["daily"][1:6][0]["dt"]
+                ).strftime("%Y-%m-%d")
+                min_temp_next_day = current_and_forecast_data["daily"][1:6][0]["temp"][
+                    "min"
+                ]
+                max_temp_next_day = current_and_forecast_data["daily"][1:6][0]["temp"][
+                    "max"
+                ]
+
+                two_days_after = datetime.utcfromtimestamp(
+                    current_and_forecast_data["daily"][1:6][1]["dt"]
+                ).strftime("%Y-%m-%d")
+                min_temp_two_days_after = current_and_forecast_data["daily"][1:6][1][
+                    "temp"
+                ]["min"]
+                max_temp_two_days_after = current_and_forecast_data["daily"][1:6][1][
+                    "temp"
+                ]["max"]
+
+                three_days_after = datetime.utcfromtimestamp(
+                    current_and_forecast_data["daily"][1:6][2]["dt"]
+                ).strftime("%Y-%m-%d")
+                min_temp_three_days_after = current_and_forecast_data["daily"][1:6][2][
+                    "temp"
+                ]["min"]
+                max_temp_three_days_after = current_and_forecast_data["daily"][1:6][2][
+                    "temp"
+                ]["max"]
+
+                four_days_after = datetime.utcfromtimestamp(
+                    current_and_forecast_data["daily"][1:6][3]["dt"]
+                ).strftime("%Y-%m-%d")
+                min_temp_four_days_after = current_and_forecast_data["daily"][1:6][3][
+                    "temp"
+                ]["min"]
+                max_temp_four_days_after = current_and_forecast_data["daily"][1:6][3][
+                    "temp"
+                ]["max"]
+
+                five_days_after = datetime.utcfromtimestamp(
+                    current_and_forecast_data["daily"][1:6][4]["dt"]
+                ).strftime("%Y-%m-%d")
+                min_temp_five_days_after = current_and_forecast_data["daily"][1:6][4][
+                    "temp"
+                ]["min"]
+                max_temp_five_days_after = current_and_forecast_data["daily"][1:6][4][
+                    "temp"
+                ]["max"]
 
                 min_temperature[city] = {
-                    date.today().strftime("%Y-%m-%d"): current_and_forecast_data[
-                        "daily"
-                    ][0]["temp"]["min"],
-                    days_before_1.strftime("%Y-%m-%d"): min(
-                        [i["temp"] for i in data_1_day_before["hourly"]]
-                    ),
-                    days_before_2.strftime("%Y-%m-%d"): min(
-                        [i["temp"] for i in data_2_days_before["hourly"]]
-                    ),
-                    days_before_3.strftime("%Y-%m-%d"): min(
-                        [i["temp"] for i in data_3_days_before["hourly"]]
-                    ),
-                    days_before_4.strftime("%Y-%m-%d"): min(
-                        [i["temp"] for i in data_4_days_before["hourly"]]
-                    ),
-                    days_before_5.strftime("%Y-%m-%d"): min(
-                        [i["temp"] for i in data_5_days_before["hourly"]]
-                    ),
-                    datetime.utcfromtimestamp(
-                        current_and_forecast_data["daily"][1:6][0]["dt"]
-                    ).strftime("%Y-%m-%d"): current_and_forecast_data["daily"][1:6][0][
-                        "temp"
-                    ][
-                        "min"
-                    ],
-                    datetime.utcfromtimestamp(
-                        current_and_forecast_data["daily"][1:6][1]["dt"]
-                    ).strftime("%Y-%m-%d"): current_and_forecast_data["daily"][1:6][1][
-                        "temp"
-                    ][
-                        "min"
-                    ],
-                    datetime.utcfromtimestamp(
-                        current_and_forecast_data["daily"][1:6][2]["dt"]
-                    ).strftime("%Y-%m-%d"): current_and_forecast_data["daily"][1:6][2][
-                        "temp"
-                    ][
-                        "min"
-                    ],
-                    datetime.utcfromtimestamp(
-                        current_and_forecast_data["daily"][1:6][3]["dt"]
-                    ).strftime("%Y-%m-%d"): current_and_forecast_data["daily"][1:6][3][
-                        "temp"
-                    ][
-                        "min"
-                    ],
-                    datetime.utcfromtimestamp(
-                        current_and_forecast_data["daily"][1:6][4]["dt"]
-                    ).strftime("%Y-%m-%d"): current_and_forecast_data["daily"][1:6][4][
-                        "temp"
-                    ][
-                        "min"
-                    ],
-                    datetime.utcfromtimestamp(
-                        current_and_forecast_data["daily"][1:6][4]["dt"]
-                    ).strftime("%Y-%m-%d"): current_and_forecast_data["daily"][1:6][5][
-                        "temp"
-                    ][
-                        "min"
-                    ],
+                    four_days_before: min_temp_four_days_before,
+                    three_days_before: min_temp_three_days_before,
+                    two_days_before: min_temp_two_days_before,
+                    day_before: min_temp_day_before,
+                    today: min_temp_today,
+                    next_day: min_temp_next_day,
+                    two_days_after: min_temp_two_days_after,
+                    three_days_after: min_temp_three_days_after,
+                    four_days_after: min_temp_four_days_after,
+                    five_days_after: min_temp_five_days_after,
                 }
 
                 max_temperature[city] = {
-                    date.today().strftime("%Y-%m-%d"): current_and_forecast_data[
-                        "daily"
-                    ][0]["temp"]["max"],
-                    days_before_1.strftime("%Y-%m-%d"): max(
-                        [i["temp"] for i in data_1_day_before["hourly"]]
-                    ),
-                    days_before_2.strftime("%Y-%m-%d"): max(
-                        [i["temp"] for i in data_2_days_before["hourly"]]
-                    ),
-                    days_before_3.strftime("%Y-%m-%d"): max(
-                        [i["temp"] for i in data_3_days_before["hourly"]]
-                    ),
-                    days_before_4.strftime("%Y-%m-%d"): max(
-                        [i["temp"] for i in data_4_days_before["hourly"]]
-                    ),
-                    days_before_5.strftime("%Y-%m-%d"): max(
-                        [i["temp"] for i in data_5_days_before["hourly"]]
-                    ),
-                    datetime.utcfromtimestamp(
-                        current_and_forecast_data["daily"][1:6][0]["dt"]
-                    ).strftime("%Y-%m-%d"): current_and_forecast_data["daily"][1:6][0][
-                        "temp"
-                    ][
-                        "max"
-                    ],
-                    datetime.utcfromtimestamp(
-                        current_and_forecast_data["daily"][1:6][1]["dt"]
-                    ).strftime("%Y-%m-%d"): current_and_forecast_data["daily"][1:6][1][
-                        "temp"
-                    ][
-                        "max"
-                    ],
-                    datetime.utcfromtimestamp(
-                        current_and_forecast_data["daily"][1:6][2]["dt"]
-                    ).strftime("%Y-%m-%d"): current_and_forecast_data["daily"][1:6][2][
-                        "temp"
-                    ][
-                        "max"
-                    ],
-                    datetime.utcfromtimestamp(
-                        current_and_forecast_data["daily"][1:6][3]["dt"]
-                    ).strftime("%Y-%m-%d"): current_and_forecast_data["daily"][1:6][3][
-                        "temp"
-                    ][
-                        "max"
-                    ],
-                    datetime.utcfromtimestamp(
-                        current_and_forecast_data["daily"][1:6][4]["dt"]
-                    ).strftime("%Y-%m-%d"): current_and_forecast_data["daily"][1:6][4][
-                        "temp"
-                    ][
-                        "max"
-                    ],
-                    datetime.utcfromtimestamp(
-                        current_and_forecast_data["daily"][1:6][4]["dt"]
-                    ).strftime("%Y-%m-%d"): current_and_forecast_data["daily"][1:6][5][
-                        "temp"
-                    ][
-                        "max"
-                    ],
+                    four_days_before: max_temp_four_days_before,
+                    three_days_before: max_temp_three_days_before,
+                    two_days_before: max_temp_two_days_before,
+                    day_before: max_temp_day_before,
+                    today: max_temp_today,
+                    next_day: max_temp_next_day,
+                    two_days_after: max_temp_two_days_after,
+                    three_days_after: max_temp_three_days_after,
+                    four_days_after: max_temp_four_days_after,
+                    five_days_after: max_temp_five_days_after,
                 }
+
         except requests.exceptions.RequestException as ex:
             print(f"Error {ex}")
 

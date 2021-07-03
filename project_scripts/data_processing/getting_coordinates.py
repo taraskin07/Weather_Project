@@ -12,14 +12,14 @@ def center_coordinates(df):
     df = df.astype({"Longitude": float})
     # df.to_csv('before.csv', sep='\t', encoding='utf-8')
 
-    # Приводим для каждого города средние значения по каждой координате
-    df = df.groupby(["City"], as_index=False).agg(
+    # Приводим для каждого мест: New_column - (страна, город) средние значения по каждой координате
+    df = df.groupby(["New_column"], as_index=False).agg(
         {"Latitude": "mean", "Longitude": "mean"}
     )
     # df.to_csv('after.csv', sep='\t', encoding='utf-8')
 
     # Формируем словарь, где каждому городу соответствует его геометрический центр
-    new_dict = df.set_index("City").T.to_dict("list")
+    new_dict = df.set_index("New_column").T.to_dict("list")
     return new_dict
 
 
