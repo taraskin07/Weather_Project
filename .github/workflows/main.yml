@@ -16,4 +16,4 @@ jobs:
        ls -la 
        black --check .
        #isort --check .
-       py.test
+       #py.test
