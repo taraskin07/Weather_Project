@@ -6,14 +6,15 @@ from geopy import OpenMapQuest
 from geopy.extra.rate_limiter import RateLimiter
 
 
-def geopy_address(coordinates_list, workers_amount):
+def geopy_address(coordinates_list, workers_amount, api_key):
     """
     Функция для получения адреса по координатам. Позволяет задать количество потоков.
     :param workers_amount: количество потоков для параллельной обработки данных
     :param coordinates_list: список с координатами
+    :param api_key: API ключ сайта https://developer.mapquest.com/
     :return df: dataframe с адресом и координатами
     """
-    geolocator = OpenMapQuest(api_key="G8uzA4xdsG5B0uLcekeCowprs41bkZlb")
+    geolocator = OpenMapQuest(api_key=api_key)
 
     # Устанавливаем задержку в секундах, чтобы избежать Too Many Requests 429 error
     delay = 1 / 20
@@ -43,14 +44,11 @@ def create_csv_file_with_addresses(df1, df2, path):
     # Объединяем два dataframe в один добавляя столбцы в конечную таблицу.
     # Часть значений при этом является NaN.
     df = df1.combine_first(df2)
-    # print(f'Combine_first: {df}')
-    # df.to_csv('combine_first.csv', sep='\t', encoding='utf-8')
+
     # Убираем строки с пустыми значениями.
     df = df.dropna(axis=0)
-    # print(df)
-    # df.to_csv('dropna.csv', sep='\t', encoding='utf-8')
     unique_country_city = df["New_column"].unique()
-    # print(loc)
+
     # Чтобы сделать папку страна/город, берем информацию из New_colomn где значения - кортеж (страна, город)
     for names in unique_country_city:
         country, city = names

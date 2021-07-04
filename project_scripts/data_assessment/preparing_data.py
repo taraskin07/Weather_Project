@@ -20,7 +20,10 @@ def func_to_create_dataframe_from_csv(folder):
     :return dataframe: полученный dataframe
     """
     dataframe = pd.concat(
-        [pd.read_csv(f, sep=",", encoding="utf-8") for f in g.glob(folder + "/*.csv")],
+        [
+            pd.read_csv(file, sep=",", encoding="utf-8")
+            for file in g.glob(folder + "/*.csv")
+        ],
         ignore_index=True,
     )
     return dataframe

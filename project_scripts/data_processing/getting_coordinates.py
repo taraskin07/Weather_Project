@@ -12,7 +12,7 @@ def center_coordinates(df):
     df = df.astype({"Longitude": float})
     # df.to_csv('before.csv', sep='\t', encoding='utf-8')
 
-    # Приводим для каждого мест: New_column - (страна, город) средние значения по каждой координате
+    # Приводим для каждого места: New_column - (страна, город) средние значения по каждой координате
     df = df.groupby(["New_column"], as_index=False).agg(
         {"Latitude": "mean", "Longitude": "mean"}
     )
@@ -41,21 +41,21 @@ def get_coordinates_list(df):
     return coordinates_list
 
 
-if __name__ == "__main__":
-    from cities_with_max_hotels import cities_with_max_amount_of_hotel
-    from preparing_data import (
-        cleaning_dataframe,
-        func_to_create_dataframe_from_csv,
-        unzip,
-    )
-
-    unzip("hotels.zip")
-    f = func_to_create_dataframe_from_csv("unpacked_files")
-    cl_f = cleaning_dataframe(f)
-    # res = pd.concat([f, cl_f]).drop_duplicates(keep=False)
-    csvvvv = cities_with_max_amount_of_hotel(cl_f)
-    # print(type(csvvvv))
-    # csvvvv.to_csv('csvvvv.csv', sep='\t', encoding='utf-8')
-
-    print(center_coordinates(csvvvv))
-    print(get_list_with_coordinates(csvvvv))
+# if __name__ == "__main__":
+#     from cities_with_max_hotels import cities_with_max_amount_of_hotel
+#     from preparing_data import (
+#         cleaning_dataframe,
+#         func_to_create_dataframe_from_csv,
+#         unzip,
+#     )
+#
+#     unzip("hotels.zip")
+#     f = func_to_create_dataframe_from_csv("unpacked_files")
+#     cl_f = cleaning_dataframe(f)
+#     # res = pd.concat([f, cl_f]).drop_duplicates(keep=False)
+#     csvvvv = cities_with_max_amount_of_hotel(cl_f)
+#     # print(type(csvvvv))
+#     # csvvvv.to_csv('csvvvv.csv', sep='\t', encoding='utf-8')
+#
+#     print(center_coordinates(csvvvv))
+#     print(get_list_with_coordinates(csvvvv))

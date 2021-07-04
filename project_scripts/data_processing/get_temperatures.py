@@ -4,10 +4,10 @@ import json
 import requests
 
 
-def get_temperature(dict_city_lat_long, app_id="2bb1a0368b668b3ce5451b54f1ab78d9"):
+def get_temperature(dict_city_lat_long, app_id):
     """
     Функция получает для центров городов с максимальным количеством отелей(по заданию) погоду:
-        - за предыдущие 5 дней;
+        - за предыдущие 5 дней, включая текущий;
     - прогноз: на последующие 5 дней;
     - текущие значения;
      через API сайта https://api.openweathermap.org/
@@ -17,7 +17,7 @@ def get_temperature(dict_city_lat_long, app_id="2bb1a0368b668b3ce5451b54f1ab78d9
     """
     # Определяем дату в нужном формате, предыдущий день
     days_before_1dt = date.today() - timedelta(days=1)
-    # Конвертируем время в формат, нужный при обращении к One Call API(openweathermap.org/)
+    # Конвертируем время в формат, нужный при обращении к One Call API(openweathermap.org/), (Unix time, UTC time zone)
     days_before_1 = int(time.mktime(days_before_1dt.timetuple()))
 
     # То же и для предыдущих дней
@@ -191,6 +191,6 @@ def get_temperature(dict_city_lat_long, app_id="2bb1a0368b668b3ce5451b54f1ab78d9
                 }
 
         except requests.exceptions.RequestException as ex:
-            print(f"Error {ex}")
+            print(f"Exception {ex}")
 
     return min_temperature, max_temperature

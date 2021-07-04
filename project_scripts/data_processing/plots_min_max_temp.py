@@ -23,7 +23,7 @@ def graph_with_min_temperature(min_temperature, path):
         path_part = os.path.join(path, country)
         whole_path = os.path.join(path_part, city)
         os.makedirs(f"{whole_path}", exist_ok=True)
-        file_path = os.path.join(whole_path, f"min_temperature_{frame}")
+        file_path = os.path.join(whole_path, f"min_temperature_{city}")
         fig.savefig(f"{file_path}.png")
         plt.clf()
 
@@ -47,6 +47,6 @@ def graph_with_max_temperature(max_temperature, path):
         path_part = os.path.join(path, country)
         whole_path = os.path.join(path_part, city)
         os.makedirs(f"{whole_path}", exist_ok=True)
-        file_path = os.path.join(whole_path, f"min_temperature_{frame}")
+        file_path = os.path.join(whole_path, f"max_temperature_{city}")
         fig.savefig(f"{file_path}.png")
         plt.clf()
