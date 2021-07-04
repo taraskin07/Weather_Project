@@ -1,6 +1,5 @@
 import glob as g
 import zipfile as z
-
 import pandas as pd
 
 
@@ -50,11 +49,3 @@ def cleaning_dataframe(frame):
     clean_frame = frame.drop(index_list_to_drop_in_dataframe)
     clean_frame.reset_index(drop=True, inplace=True)
     return clean_frame
-
-
-if __name__ == "__main__":
-    unzip("hotels.zip")
-    f = func_to_create_dataframe_from_csv("unpacked_files")
-    cl_f = cleaning_dataframe(f)
-    res = pd.concat([f, cl_f]).drop_duplicates(keep=False)
-    print(res["Latitude"], res["Longitude"])

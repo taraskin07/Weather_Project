@@ -6,13 +6,11 @@ def cities_with_max_amount_of_hotel(df):
     """
     # Получение объекта Series, отсортированного по стране и городу, перевод в объект dataframe. Добавление столбца Size со значением отелей в городе
     df_new = df.groupby(["Country", "City"]).size().to_frame("Size").reset_index()
-    # df_new.to_csv('1b.csv', sep='\t', encoding='utf-8')
 
     # Поиск городов с наибольшим числом отелей
     top_cities_with_max_hotels_df = df_new.sort_values(
         "Size", ascending=False
     ).drop_duplicates(["Country"])
-    # top_cities_with_max_hotels_df.to_csv('3b.csv', sep='\t', encoding='utf-8')
 
     # Получение новой колонки как в исходном, так и в конечном dataframe, т.к. некоторые города имеют одинаковые названия, но принадлежат разным странам
     top_cities_with_max_hotels_df["New_column"] = top_cities_with_max_hotels_df[
@@ -25,8 +23,6 @@ def cities_with_max_amount_of_hotel(df):
         df["New_column"].isin(top_cities_with_max_hotels_df["New_column"].values)
     ]
     df_sorted = df_sorted.sort_values(["Country"])
-    # print(type(df_sorted))
-    # df_sorted.to_csv('4.csv', sep='\t', encoding='utf-8')
     return df_sorted
 
 

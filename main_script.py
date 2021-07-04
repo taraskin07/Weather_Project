@@ -110,6 +110,7 @@ def main(
 
     # Находим центр координат для каждого города из топ по количеству отелей и создаем из этого словарь - project_scripts.data_processing.getting_coordinates
     central_coordinates_dict = center_coordinates(df)
+    print(central_coordinates_dict)
 
     # Получаем температуры для центров городов с максимальным количеством отелей на разные дни - project_scripts.data_processing.get_temperatures
     min_temperature, max_temperature = get_temperature(central_coordinates_dict, app_id)
