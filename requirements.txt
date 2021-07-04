@@ -5,6 +5,7 @@ pytest-sugar
 pandas
 click
 geopy
+numpy
 matplotlib
 seaborn
 requests
