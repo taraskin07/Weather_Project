@@ -1,28 +1,26 @@
 import click
 
+import project_scripts.data_assessment.cities_with_max_hotels as cty
 
-from project_scripts.data_assessment.cities_with_max_hotels import (
-    cities_with_max_amount_of_hotel,
-)
-from project_scripts.data_assessment.preparing_data import (
-    cleaning_dataframe,
-    func_to_create_dataframe_from_csv,
-    unzip,
-)
-from project_scripts.data_processing.addresses import (
-    create_csv_file_with_addresses,
-    geopy_address,
-)
+cities_with_max_amount_of_hotel = cty.cities_with_max_amount_of_hotel
+import project_scripts.data_assessment.preparing_data as prdat
+
+cleaning_dataframe = prdat.cleaning_dataframe
+func_to_create_dataframe_from_csv = prdat.func_to_create_dataframe_from_csv
+unzip = prdat.unzip
+import project_scripts.data_processing.addresses as adrs
+
+create_csv_file_with_addresses = adrs.create_csv_file_with_addresses
+geopy_address = adrs.geopy_address
+import project_scripts.data_processing.getting_coordinates as gsc
 from project_scripts.data_processing.get_temperatures import get_temperature
-from project_scripts.data_processing.getting_coordinates import (
-    center_coordinates,
-    get_coordinates_list,
-)
-from project_scripts.data_processing.plots_min_max_temp import (
-    graph_with_max_temperature,
-    graph_with_min_temperature,
-)
 
+center_coordinates = gsc.center_coordinates
+get_coordinates_list = gsc.get_coordinates_list
+import project_scripts.data_processing.plots_min_max_temp as plots
+
+graph_with_max_temperature = plots.graph_with_max_temperature
+graph_with_min_temperature = plots.graph_with_min_temperature
 from project_scripts.post_processing import post_processing
 
 
@@ -110,7 +108,6 @@ def main(
 
     # Находим центр координат для каждого города из топ по количеству отелей и создаем из этого словарь - project_scripts.data_processing.getting_coordinates
     central_coordinates_dict = center_coordinates(df)
-    print(central_coordinates_dict)
 
     # Получаем температуры для центров городов с максимальным количеством отелей на разные дни - project_scripts.data_processing.get_temperatures
     min_temperature, max_temperature = get_temperature(central_coordinates_dict, app_id)

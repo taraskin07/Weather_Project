@@ -1,9 +1,13 @@
-from project_scripts.post_processing import (
-    find_day_and_city_with_max_temperature,
-    find_city_with_max_difference_in_max_temperature,
-    find_day_and_city_with_min_temperature,
-    find_day_and_city_with_max_difference_in_temperature,
+import project_scripts.post_processing as ppa
+
+find_city_with_max_difference_in_max_temperature = (
+    ppa.find_city_with_max_difference_in_max_temperature
 )
+find_day_and_city_with_max_difference_in_temperature = (
+    ppa.find_day_and_city_with_max_difference_in_temperature
+)
+find_day_and_city_with_max_temperature = ppa.find_day_and_city_with_max_temperature
+find_day_and_city_with_min_temperature = ppa.find_day_and_city_with_min_temperature
 
 
 def test_post_processing():

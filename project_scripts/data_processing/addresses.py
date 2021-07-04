@@ -1,5 +1,6 @@
 import os
 from concurrent.futures import ThreadPoolExecutor
+
 import numpy as np
 import pandas as pd
 from geopy import OpenMapQuest

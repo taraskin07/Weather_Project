@@ -1,8 +1,9 @@
-from project_scripts.data_processing.addresses import (
-    geopy_address,
-    create_csv_file_with_addresses,
-)
 import pandas as pd
+
+import project_scripts.data_processing.addresses as adrss
+
+create_csv_file_with_addresses = adrss.create_csv_file_with_addresses
+geopy_address = adrss.geopy_address
 
 
 def test_geopy_address():

@@ -24,19 +24,3 @@ def cities_with_max_amount_of_hotel(df):
     ]
     df_sorted = df_sorted.sort_values(["Country"])
     return df_sorted
-
-
-if __name__ == "__main__":
-    from preparing_data import (
-        cleaning_dataframe,
-        func_to_create_dataframe_from_csv,
-        unzip,
-    )
-
-    unzip("hotels.zip")
-    f = func_to_create_dataframe_from_csv("unpacked_files")
-    cl_f = cleaning_dataframe(f)
-    # res = pd.concat([f, cl_f]).drop_duplicates(keep=False)
-    csvvvv = cities_with_max_amount_of_hotel(cl_f)
-    # print(type(csvvvv))
-    # csvvvv.to_csv('csvvvv.csv', sep='\t', encoding='utf-8')

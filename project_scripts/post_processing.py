@@ -1,5 +1,6 @@
-import pandas as pd
 import os
+
+import pandas as pd
 
 
 def find_day_and_city_with_max_temperature(max_temperature):

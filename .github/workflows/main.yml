@@ -15,5 +15,5 @@ jobs:
        pip install -r requirements.txt
        ls -la 
        black --check .
-       #isort --check .
+       isort --check .
        py.test

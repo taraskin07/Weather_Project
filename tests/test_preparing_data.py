@@ -1,12 +1,12 @@
-from project_scripts.data_assessment.preparing_data import (
-    cleaning_dataframe,
-    func_to_create_dataframe_from_csv,
-    unzip,
-)
-
-import pytest
 import os.path as p
+
 import pandas as pd
+
+import project_scripts.data_assessment.preparing_data as prdat
+
+cleaning_dataframe = prdat.cleaning_dataframe
+func_to_create_dataframe_from_csv = prdat.func_to_create_dataframe_from_csv
+unzip = prdat.unzip
 
 
 def test_unzip():
