@@ -69,9 +69,9 @@ def main(
 
     Для запуска скрипта необходимо выполнить команду:
 
-        python main_file.py data/hotels.zip {output_folder} {max_workers_amount} {api_key} {app_id}
+        python main_script.py data/hotels.zip {output_folder} {max_workers_amount} {api_key} {app_id}
         или
-        python3 main_file.py data/hotels.zip {output_folder} {max_workers_amount} {api_key} {app_id}
+        python3 main_script.py data/hotels.zip {output_folder} {max_workers_amount} {api_key} {app_id}
 
     Где:
      data/hotels.zip - путь к папке с входными данными;
