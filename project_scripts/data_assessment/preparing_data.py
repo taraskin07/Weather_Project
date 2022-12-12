@@ -4,20 +4,20 @@ import zipfile as z
 import pandas as pd
 
 
-def unzip(path):
+def unzip(path, output_path="unpacked_files"):
     """
-    Функция распаковывет zip файл в директорию unpacked_files
-    :param path: путь до zip файла
+    A function that unzip file into 'unpacked_files' directory.
+    :param path: path to zip file
     """
     with z.ZipFile(path, "r") as myzip:
-        myzip.extractall("unpacked_files")
+        myzip.extractall(output_path)
 
 
 def func_to_create_dataframe_from_csv(folder):
     """
-    Функция создает объект dataframe из распакованных csv файлов
-    :param folder: папка с csv файлами
-    :return dataframe: полученный dataframe
+    A function that creates dataframe from unzipped csv files.
+    :param folder: folder path with csv files
+    :return dataframe: result dataframe
     """
     dataframe = pd.concat(
         [
@@ -31,10 +31,10 @@ def func_to_create_dataframe_from_csv(folder):
 
 def cleaning_dataframe(frame):
     """
-    Функция очищает данные от невалидных записей
-    (содержащих заведомо ложные значения или отсутствующие необходимые элементы)
-    :param frame: полученный dataframe
-    :return clean_frame: исправленный dataframe
+    This function clear data from invalid information
+    (false or missing values).
+    :param frame: initial dataframe
+    :return clean_frame: fixed dataframe
     """
     frame = frame.dropna(axis=0, how="any")
     index_list_to_drop_in_dataframe = []
@@ -50,3 +50,8 @@ def cleaning_dataframe(frame):
     clean_frame = frame.drop(index_list_to_drop_in_dataframe)
     clean_frame.reset_index(drop=True, inplace=True)
     return clean_frame
+
+
+
+
+

@@ -11,15 +11,16 @@ unzip = prdat.unzip
 
 def test_unzip():
     path = p.join("tests", "test.zip")
-    unzip(path)
-    file_path = p.join("unpacked_files", "test.csv")
+    name_of_folder = p.join("tests", "test_unpacked_files")
+    unzip(path, name_of_folder)
+    file_path = p.join(name_of_folder, "test.csv")
     assert p.exists(file_path)
-
 
 def test_func_to_create_dataframe_from_csv():
     path = p.join("tests", "test.zip")
-    unzip(path)
-    f = func_to_create_dataframe_from_csv("unpacked_files")
+    name_of_folder = p.join("tests", "test_unpacked_files")
+    unzip(path, name_of_folder)
+    f = func_to_create_dataframe_from_csv(p.join("tests", "test_unpacked_files"))
     cl_f = cleaning_dataframe(f)
     assert len(cl_f["Latitude"]) == len(cl_f["Longitude"])
     df = pd.DataFrame(cl_f)

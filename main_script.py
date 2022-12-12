@@ -32,8 +32,8 @@ def main(
     path_to_input_data,
     path_to_output_data,
     max_workers_amount,
-    api_key="G8uzA4xdsG5B0uLcekeCowprs41bkZlb",
-    app_id="2bb1a0368b668b3ce5451b54f1ab78d9",
+    api_key="W0oJzSg0aPkT3fAHlzAsSwKuIGeJvlOc",
+    app_id="bb92d313e962c39150e26b5318be6a87",
 ):
     """Утилита предназначена для многопоточной обработки данных,
         аккумулирования результатов через API из Интернета и их дальнейшего представления на графиках.

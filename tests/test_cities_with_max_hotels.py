@@ -14,11 +14,12 @@ unzip = prdat.unzip
 
 def test_cities_with_max_amount_of_hotel():
     path = p.join("tests", "test.zip")
-    unzip(path)
-    f = func_to_create_dataframe_from_csv("unpacked_files")
+    name_of_folder = p.join("tests", "test_unpacked_files")
+    unzip(path, name_of_folder)
+    f = func_to_create_dataframe_from_csv(p.join("tests", "test_unpacked_files"))
     cl_f = cleaning_dataframe(f)
     df_sorted = cities_with_max_amount_of_hotel(cl_f)
     df = pd.DataFrame(df_sorted)
 
     for index in range(7):
-        assert df.iloc[index]["New_column"] == ("AT", "Vienna")
+        assert df.iloc[index]["Allocation"] == ("AT", "Vienna")

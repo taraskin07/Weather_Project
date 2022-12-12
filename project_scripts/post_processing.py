@@ -5,15 +5,14 @@ import pandas as pd
 
 def find_day_and_city_with_max_temperature(max_temperature):
     """
-    Функция ищет город и день наблюдения с максимальной температурой за рассматриваемый период.
-    :param max_temperature: словарь key: дата, value: максимальная температура
-    :param path: путь для сохранения csv файла
+    The function looks for the city and day with the maximum temperature for the period under consideration.
+    :param max_temperature: dictionary, key: date, value: max temperature
+    :param path: path for csv file
     :return:
     """
     df = pd.DataFrame(max_temperature)
     city_with_max_temperature = df.max()[df.max() == df.max(axis=1).max()].index
     data_max_temperature = df.idxmax()[city_with_max_temperature][0]
-
     city, country = city_with_max_temperature[0][1], city_with_max_temperature[0][0]
     temp = max_temperature[(country, city)][data_max_temperature]
     temp = float("{0:.2f}".format(temp))
@@ -22,10 +21,10 @@ def find_day_and_city_with_max_temperature(max_temperature):
     df = pd.DataFrame(
         data,
         columns=[
-            "Город с максимальной температурой за рассматриваемый период",
-            "Страна",
-            "Дата",
-            "Температура",
+            "City with the highest temperature for the specified period",
+            "Country",
+            "Date",
+            "Temperature",
         ],
     )
 
@@ -34,9 +33,9 @@ def find_day_and_city_with_max_temperature(max_temperature):
 
 def find_city_with_max_difference_in_max_temperature(max_temperature):
     """
-    Функция ищет город с максимальным изменением максимальной температуры.
-    :param max_temperature:  словарь key: дата, value: максимальная температура
-    :param path: путь для сохранения csv файла
+    The function looks for the city with the maximum change in maximum temperature.
+    :param max_temperature: dictionary, key: date, value: max temperature
+    :param path: path for csv file
     :return:
     """
     df = pd.DataFrame(max_temperature)
@@ -51,9 +50,9 @@ def find_city_with_max_difference_in_max_temperature(max_temperature):
     df = pd.DataFrame(
         data,
         columns=[
-            "Страна",
-            "Город с максимальным изменением максимальной температуры",
-            "Изменение температуры",
+            "Country",
+            "The city with the maximum change in maximum temperature",
+            "Temperature change",
         ],
     )
 
@@ -62,9 +61,9 @@ def find_city_with_max_difference_in_max_temperature(max_temperature):
 
 def find_day_and_city_with_min_temperature(min_temperature):
     """
-    Функция ищет город и день наблюдения с минимальной температурой за рассматриваемый период.
-    :param min_temperature: словарь key: дата, value: минимальная температура
-    :param path: путь для сохранения csv файла
+    The function looks for the city and day with the minimum temperature for the period under consideration.
+    :param max_temperature: dictionary, key: date, value: min temperature
+    :param path: path for csv file
     :return:
     """
     df = pd.DataFrame(min_temperature)
@@ -78,10 +77,10 @@ def find_day_and_city_with_min_temperature(min_temperature):
     df = pd.DataFrame(
         data,
         columns=[
-            "Страна",
-            "Название города с минимальной температурой за рассматриваемый период",
-            "Дата",
-            "Температура",
+            "Country",
+            "City with the lowest temperature for the specified period",
+            "Data",
+            "Temperature",
         ],
         index=None,
     )
@@ -93,10 +92,10 @@ def find_day_and_city_with_max_difference_in_temperature(
     max_temperature, min_temperature
 ):
     """
-    Функция ищет город и день с максимальной разницей между максимальной и минимальной температурой.
-    :param max_temperature: словарь key: дата, value: максимальная температура
-    :param min_temperature: словарь key: дата, value: минимальная температура
-    :param path: путь для сохранения csv файла
+    The function looks for the city and day with the maximum difference between the maximum and minimum temperatures.
+    :param max_temperature: dictionary, key: date, value: max temperature
+    :param min_temperature: dictionary, key: date, value: min temperature
+    :param path: path for csv file
     :return:
     """
     df_max_temp = pd.DataFrame(max_temperature)
@@ -118,10 +117,10 @@ def find_day_and_city_with_max_difference_in_temperature(
     df = pd.DataFrame(
         data,
         columns=[
-            "Страна",
-            "Название города с максимальной разницей между максимальной и минимальной температурой",
-            "Дата",
-            "Разница температур",
+            "Country",
+            "City with maximum difference between maximum and minimum temperature",
+            "Date",
+            "Temperature difference",
         ],
         index=None,
     )
@@ -133,28 +132,28 @@ def post_processing(max_temperature, min_temperature, path):
     path_to_output = os.path.join(path, "post_processing")
     os.makedirs(f"{path_to_output}", exist_ok=True)
 
-    # Ищем город и день наблюдения с максимальной температурой за рассматриваемый период.
+    # Looking for the city and the day of observation with the maximum temperature for the period under consideration.
     df1 = find_day_and_city_with_max_temperature(max_temperature)
     path_to_output_file = os.path.join(
         path_to_output, "day_and_city_with_max_temperature.csv"
     )
     df1.to_csv(path_to_output_file, index=False, sep="\t", encoding="utf-8")
 
-    # Ищем город с максимальным изменением максимальной температуры.
+    # Looking for a city with the maximum change in maximum temperature.
     df2 = find_city_with_max_difference_in_max_temperature(max_temperature)
     path_to_output_file = os.path.join(
         path_to_output, "city_with_max_difference_in_max_temperature.csv"
     )
     df2.to_csv(path_to_output_file, index=False, sep="\t", encoding="utf-8")
 
-    # Ищем город и день наблюдения с минимальной температурой за рассматриваемый период.
+    # Looking for the city and the day of observation with the minimum temperature for the period under consideration.
     df3 = find_day_and_city_with_min_temperature(min_temperature)
     path_to_output_file = os.path.join(
         path_to_output, "day_and_city_with_min_temperature.csv"
     )
     df3.to_csv(path_to_output_file, index=False, sep="\t", encoding="utf-8")
 
-    # Ищем город и день с максимальной разницей между максимальной и минимальной температурой.
+    # Looking for a city and a day with a maximum difference between the maximum and minimum temperatures.
     df4 = find_day_and_city_with_max_difference_in_temperature(
         max_temperature, min_temperature
     )

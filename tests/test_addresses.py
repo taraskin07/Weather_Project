@@ -9,7 +9,7 @@ geopy_address = adrss.geopy_address
 def test_geopy_address():
     coordinates_list = [[48.1955998, 16.3826989]]
     df = pd.DataFrame(
-        geopy_address(coordinates_list, 60, "G8uzA4xdsG5B0uLcekeCowprs41bkZlb")
+        geopy_address(coordinates_list, 60, "W0oJzSg0aPkT3fAHlzAsSwKuIGeJvlOc")
     )
     str = df["Address"].to_list()
     assert str == [

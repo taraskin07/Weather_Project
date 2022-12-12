@@ -39,14 +39,14 @@ def test_post_processing():
             "2021-07-09": 31,
         }
     }
-    a = find_day_and_city_with_max_temperature(max_temperature)["Температура"].iloc[0]
+    a = find_day_and_city_with_max_temperature(max_temperature)["Temperature"].iloc[0]
     b = find_city_with_max_difference_in_max_temperature(max_temperature)[
-        "Изменение температуры"
+        "Temperature change"
     ].iloc[0]
-    c = find_day_and_city_with_min_temperature(min_temperature)["Температура"].iloc[0]
+    c = find_day_and_city_with_min_temperature(min_temperature)["Temperature"].iloc[0]
     d = find_day_and_city_with_max_difference_in_temperature(
         max_temperature, min_temperature
-    )["Разница температур"].iloc[0]
+    )["Temperature difference"].iloc[0]
 
     assert a == 36.98
     assert b == 19.18

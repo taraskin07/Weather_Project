@@ -19,7 +19,7 @@ get_coordinates_list = gsc.get_coordinates_list
 
 def test_get_temperature():
     dict_city_lat_long = {("AT", "Vienna"): [48.203066462500004, 16.368756425]}
-    app_id = "2bb1a0368b668b3ce5451b54f1ab78d9"
+    app_id = "bb92d313e962c39150e26b5318be6a87"
     min, max = get_temperature(dict_city_lat_long, app_id)
     assert isinstance(min, dict)
     assert isinstance(max, dict)
@@ -27,8 +27,9 @@ def test_get_temperature():
 
 def test_get_and_center_coordinates():
     path = p.join("tests", "test_1_city.zip")
-    unzip(path)
-    file_path = p.join("unpacked_files", "test_1_city.csv")
+    name_of_folder = p.join("tests", "test_unpacked_files")
+    unzip(path, name_of_folder)
+    file_path = p.join(name_of_folder, "test_1_city.csv")
     f = pd.read_csv(file_path, sep=",", encoding="utf-8")
     cl_f = cleaning_dataframe(f)
     df = cities_with_max_amount_of_hotel(cl_f)

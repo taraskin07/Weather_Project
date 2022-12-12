@@ -8,13 +8,13 @@ def center_coordinates(df):
     df = df.astype({"Latitude": float})
     df = df.astype({"Longitude": float})
 
-    # Приводим для каждого места: New_column - (страна, город) средние значения по каждой координате
-    df = df.groupby(["New_column"], as_index=False).agg(
+    # Приводим для каждого места: Allocation - (страна, город) средние значения по каждой координате
+    df = df.groupby(["Allocation"], as_index=False).agg(
         {"Latitude": "mean", "Longitude": "mean"}
     )
 
     # Формируем словарь, где каждому городу соответствует его геометрический центр
-    new_dict = df.set_index("New_column").T.to_dict("list")
+    new_dict = df.set_index("Allocation").T.to_dict("list")
     return new_dict
 
 
