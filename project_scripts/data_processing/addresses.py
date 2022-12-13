@@ -3,7 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 import numpy as np
 import pandas as pd
-from geopy import OpenMapQuest
+from geopy import MapQuest
 from geopy.extra.rate_limiter import RateLimiter
 
 
@@ -15,21 +15,26 @@ def geopy_address(coordinates_list, workers_amount, api_key):
     :param api_key: API-key from https://developer.mapquest.com/
     :return df: dataframe with address and coordinates
     """
-    geolocator = OpenMapQuest(api_key=api_key)
+    geolocator = MapQuest(api_key=api_key)
 
     # Set a delay in seconds to avoid "Too Many Requests 429 error".
     delay = 1 / 20
-    geocode = RateLimiter(geolocator.geocode, min_delay_seconds=delay)
+    get_address = RateLimiter(geolocator.reverse, min_delay_seconds=delay)
 
     with ThreadPoolExecutor(max_workers=workers_amount) as th:
-        locations = dict(th.map(geocode, coordinates_list))
+        locations = dict(th.map(get_address, coordinates_list))
+
+
 
     # Dictionary with coordinates and address is converted into a DataFrame.
-    df = pd.DataFrame(
-        locations.values(), index=locations.keys(), columns=["Latitude", "Longitude"]
-    )
-    df["Address"] = df.index
-    df = df.reset_index(drop=True)
+    df = pd.DataFrame.from_dict(locations, orient='index')
+
+    # There is no proper index and previous one is oriented wrong (columns: 'index', 0, 1).
+    df = df.reset_index()
+
+    # New index has been constructed.
+    # Now columns need to be renamed properly (columns: 'index', 0, 1 ==> 'Address', 'Latitude', 'Longitude').
+    df = df.rename(columns = {"index":"Address", 0:"Latitude", 1:"Longitude"})
     return df
 
 
@@ -86,12 +91,34 @@ def save_df_in_csv_less_than_100_notes(df, path):
         )
 
 
-if __name__ == "__main__":
-    coordinates_list = (48.1955998, 16.3826989)
-    df = pd.DataFrame(
-        geopy_address(coordinates_list, 1, "W0oJzSg0aPkT3fAHlzAsSwKuIGeJvlOc")
-    )
-    # str = df["Address"].to_list()
-    # assert str == [
-    #     "Lindner Hotel am Belvedere, 12, Rennweg, Botschaftsviertel, KG Landstraße, Landstraße, Wien, 1030, Österreich"
-    # ]
+# if __name__ == '__main__':
+#     # coordinates_list = [[48.1955998, 16.3826989], [47.1955998, 15.3826989]]
+#     # geolocator = MapQuest(api_key='W0oJzSg0aPkT3fAHlzAsSwKuIGeJvlOc')
+#     #
+#     # # Set a delay in seconds to avoid "Too Many Requests 429 error".
+#     # delay = 1 / 20
+#     # get_address = RateLimiter(geolocator.reverse, min_delay_seconds=delay)
+#     #
+#     # with ThreadPoolExecutor(max_workers=2) as th:
+#     #     locations = dict(th.map(get_address, coordinates_list))
+#     locations = {'12 Rennweg, 3. Bezirk-Landstraße, Wien, Wien, 9, AT, 1030': (48.19596, 16.38288), 'Am Hiening, Semriach, Graz-Umgebung, 6, AT, 8102': (47.19543, 15.38107),'12  9, AT, 1030': (22.19896, 33.38288),}
+#
+#     # print (f'Locations keys are: \n{locations.keys()}')
+#     # print (f'Locations values are: \n{locations.values()}')
+#
+#     print(locations)
+#
+#     # Dictionary with coordinates and address is converted into a DataFrame.
+#     df = pd.DataFrame(
+#         locations.values(), index=locations.keys(), columns=["Latitude", "Longitude"]
+#     )
+#     df["Address"] = df.index
+#     df = df.reset_index(drop=True)
+#     print (f'Dataframe: \n\n{df.head()}')
+#
+#     df = pd.DataFrame.from_dict(locations, orient='index').reset_index()
+#     df = df.rename(columns = {"index":"Address", 0:"Latitude", 1:"Longitude"})
+#     print(f'Dataframe Address: \n\n{df.head()}')
+#     # # df["Address"] = df.index
+#     # #
+#     # print (f'Dataframe reset: \n\n{df.head()}')

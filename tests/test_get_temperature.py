@@ -39,8 +39,6 @@ def test_get_and_center_coordinates():
     assert lat_vienna == 48.2
     assert lon_vienna == 16.37
 
-    print(get_coordinates_list(df))
-
     assert isinstance(get_coordinates_list(df), list)
     assert get_coordinates_list(df) == [
         "48.2058584, 16.3766545",

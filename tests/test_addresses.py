@@ -9,9 +9,9 @@ geopy_address = adrss.geopy_address
 def test_geopy_address():
     coordinates_list = [[48.1955998, 16.3826989]]
     df = pd.DataFrame(
-        geopy_address(coordinates_list, 60, "W0oJzSg0aPkT3fAHlzAsSwKuIGeJvlOc")
+        geopy_address(coordinates_list, 1, "W0oJzSg0aPkT3fAHlzAsSwKuIGeJvlOc")
     )
-    str = df["Address"].to_list()
-    assert str == [
-        "Lindner Hotel am Belvedere, 12, Rennweg, Botschaftsviertel, KG Landstraße, Landstraße, Wien, 1030, Österreich"
+    addr = df["Address"].to_list()
+    assert addr == [
+        "12 Rennweg, 3. Bezirk-Landstraße, Wien, Wien, 9, AT, 1030"
     ]

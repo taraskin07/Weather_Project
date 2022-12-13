@@ -7,13 +7,13 @@ import requests
 
 def get_temperature(dict_city_lat_long, app_id):
     """
-    Функция получает для центров городов с максимальным количеством отелей(по заданию) погоду:
-        - за предыдущие 5 дней, включая текущий;
-    - прогноз: на последующие 5 дней;
-    - текущие значения;
-     через API сайта https://api.openweathermap.org/
-    :param dict_city-lat_long: словарь с городами и их координатами
-    :param app_id: API ключ сайта https://api.openweathermap.org/
+    The function gets the weather for city centers with the maximum number of hotels (according to the task):
+    - for the previous 5 days, including the current one;
+    - forecast: for the next 5 days;
+    - current values;
+    API used: https://api.openweathermap.org/
+    :param dict_city-lat_long: dictionary with cities and their coordinates
+    :param app_id: API-key from https://api.openweathermap.org/
     :return min_temperature, max_temperature:
     """
     # Определяем дату в нужном формате, предыдущий день
@@ -195,3 +195,68 @@ def get_temperature(dict_city_lat_long, app_id):
             print(f"Exception {ex}")
 
     return min_temperature, max_temperature
+
+
+if __name__=='__main__':
+    import os.path as p
+
+    import pandas as pd
+
+    import project_scripts.data_assessment.cities_with_max_hotels as cwmh
+
+    cities_with_max_amount_of_hotel = cwmh.cities_with_max_amount_of_hotel
+
+    import project_scripts.data_assessment.preparing_data as prdat
+
+    cleaning_dataframe = prdat.cleaning_dataframe
+    unzip = prdat.unzip
+    import project_scripts.data_processing.getting_coordinates as gsc
+
+    center_coordinates = gsc.center_coordinates
+    get_coordinates_list = gsc.get_coordinates_list
+
+    path = p.join("../../tests", "test_1_city.zip")
+    name_of_folder = p.join("tests", "test_unpacked_files")
+    unzip(path, name_of_folder)
+    file_path = p.join(name_of_folder, "test_1_city.csv")
+    f = pd.read_csv(file_path, sep=",", encoding="utf-8")
+    cl_f = cleaning_dataframe(f)
+    df = cities_with_max_amount_of_hotel(cl_f)
+
+    lat_vienna = float("{0:.2f}".format(center_coordinates(df)[("AT", "Vienna")][0]))
+    lon_vienna = float("{0:.2f}".format(center_coordinates(df)[("AT", "Vienna")][1]))
+    # assert lat_vienna == 48.2
+    # assert lon_vienna == 16.37
+    print(f'Lat Viena: {lat_vienna}')
+    print(f'Lon Viena: {lon_vienna}')
+
+    print(f'Coordinates list: {get_coordinates_list(df)}')
+
+    # assert isinstance(get_coordinates_list(df), list)
+    # assert get_coordinates_list(df) == [
+    #     "48.2058584, 16.3766545",
+    #     "48.1954348, 16.383429",
+    #     "48.1965878, 16.3413729",
+    #     "48.2163149, 16.3685103",
+    #     "48.2062103, 16.3710387",
+    #     "48.2002872, 16.3547746",
+    #     "48.1955998, 16.3826989",
+    #     "48.2082385, 16.3715725",
+    # ]
+
+    dict_city_lat_long = {("AT", "Vienna"): [48.203066462500004, 16.368756425]}
+    app_id = "bb92d313e962c39150e26b5318be6a87"
+    min, max = get_temperature(dict_city_lat_long, app_id)
+
+    print (f'\nMin : \n{min}\n')
+
+    print (f'\nMax : \n{max}')
+
+    Min_d={('AT', 'Vienna'): {'2022-12-09': 1.44, '2022-12-10': 2.8, '2022-12-11': 2.5, '2022-12-12': -0.68,
+                        '2022-12-13': -4.6, '2022-12-14': -2.27, '2022-12-15': -0.15, '2022-12-16': -0.94,
+                        '2022-12-17': -2.08, '2022-12-18': -4.19}}
+
+    Max_d={('AT', 'Vienna'): {'2022-12-09': 5.25, '2022-12-10': 5, '2022-12-11': 3.9, '2022-12-12': 2.63, '2022-12-13': 0.79,
+                        '2022-12-14': 0.86, '2022-12-15': 2.51, '2022-12-16': 0.7, '2022-12-17': 0.79,
+                        '2022-12-18': -0.07}}
+    
