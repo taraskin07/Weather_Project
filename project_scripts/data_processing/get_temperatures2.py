@@ -19,22 +19,21 @@ def day(day_num):
     day(-1) ==> return yesterday's date
     day(1) ==> return tomorrow's date
     """
+
+
+    # Determine the date in the desired format.
     day = date.today() + timedelta(days=day_num)
-    # print(f'day  {day}')
-    # print(f'today {date.today()}')
-
     tuple_obj = day.timetuple()
-    # print(f'tuple_obj  {tuple_obj}')
-    time_val = int(time.mktime(tuple_obj))
 
-    # print(f'time_val  {time_val}')
+    # Convert the time to the One Call API (openweathermap.org/) required format - (Unix time, UTC time zone).
+    unix_time = int(time.mktime(tuple_obj))
 
-    return time_val
-
+    return unix_time
 
 
 
-def weather_historical_data_up_to_5_days(api_url, params, days):
+
+def weather_historical_data_up_to_5_days(api_url, params, days_amount):
     """
     The function gets the historical weather data for coordinates given.
     API used: https://openweathermap.org/api/one-call-api
@@ -43,27 +42,37 @@ def weather_historical_data_up_to_5_days(api_url, params, days):
     :return current_and_forecast_data: json response
     """
     try:
-        days = int(days)
-        if 1 <= days <= 5:
-            data_json=[]
-            for i in range(days):
+        days_amount = int(days_amount)
+        data_json = []
+        if 2 <= days_amount <= 5:
+
+            for i in range(1, days_amount):
                 response = requests.get(
                     f"{api_url}/timemachine", params={**params, **{"dt": day(-i)}}
                 )
-
+                # d = response.strftime("%Y-%m-%d")
                 response = response.json()
-                d = response.strftime("%Y-%m-%d")
-                print(f"Day {i} stands for {d}")
+
+                # print(f"Day {i} stands for {d}")
 
                 data_json.append(response)
-                return data_json
+            return data_json
+
+        elif days_amount == 1:
+            response = requests.get(
+                f"{api_url}/timemachine", params={**params, **{"dt": day(-days_amount)}}
+            )
+            response = response.json()
+            data_json.append(response)
+            return data_json
+
         else:
             print(f"Days value must be in range from 1 to 5 days!")
     except ValueError:
         print(f'Days value must be integer from 1 to 5.')
 
 
-def current_and_forecast_weather(dict_city_lat_long, app_id):
+def weather_data(lat, lon, app_id, days_amount):
     """
     The function gets the weather for city centers with the maximum number of hotels (according to the task):
     - forecast: for the next 5 days;
@@ -74,10 +83,6 @@ def current_and_forecast_weather(dict_city_lat_long, app_id):
     :return current_and_forecast_data: json response
     """
 
-    # Initial information is taken from dict with cities and coordinates.
-    for city, lat_long in dict_city_lat_long.items():
-        lat = lat_long[0]
-        lon = lat_long[1]
 
     # Base url for One Call API
     api_url = "https://api.openweathermap.org/data/2.5/onecall"
@@ -90,114 +95,51 @@ def current_and_forecast_weather(dict_city_lat_long, app_id):
         "exclude": "minutely, alerts",
     }
 
+
     try:
         if requests.get(api_url, params=params):
             # Temperature values for the current day and forecast for 5 days
             current_and_forecast_weather = requests.get(api_url, params=params)
             current_and_forecast_data = current_and_forecast_weather.json()
-            print(current_and_forecast_data)
-            return current_and_forecast_data
+
+            # Historical temperature values for the last 5 days
+            historical_data = weather_historical_data_up_to_5_days(api_url, params, days_amount)
+
+            return historical_data, current_and_forecast_data
 
     except requests.exceptions.RequestException as ex:
         print(f"Exception {ex}")
 
 
-dict_city_lat_long = {("AT", "Vienna"): [48.203066462500004, 16.368756425]}
-app_id = "bb92d313e962c39150e26b5318be6a87"
-# get_temperature(dict_city_lat_long, app_id)
-
-
-
-
-# def get_temperature(dict_city_lat_long, app_id):
-#     """
-#     The function gets the weather for city centers with the maximum number of hotels (according to the task):
-#     - for the previous 5 days, including the current one;
-#     - forecast: for the next 5 days;
-#     - current values;
-#     API used: https://openweathermap.org/api/one-call-api
-#     :param dict_city-lat_long: dictionary with cities and their coordinates
-#     :param app_id: API-key from https://api.openweathermap.org/
-#     :return min_temperature, max_temperature:
-#     """
-
-    # # As a result it is supposed to be the dictionary {(Country, City): {date:temperature}}
-    # min_temperature = dict()
-    # max_temperature = dict()
-
 
 if __name__=='__main__':
-    api_url = "https://api.openweathermap.org/data/2.5/onecall"
-
-    for city, lat_long in dict_city_lat_long.items():
-        lat = lat_long[0]
-        lon = lat_long[1]
-
-
+    dict_city_lat_long = {("AT", "Vienna"): [48.203066462500004, 16.368756425]}
     app_id = "bb92d313e962c39150e26b5318be6a87"
 
-    params = {
-        "lat": lat,
-        "lon": lon,
-        "appid": app_id,
-        "units": "metric",
-        "exclude": "minutely, alerts",
-    }
-    days = 5
+
+    def get_temperature(dict_city_lat_long, days_amount=5, app_id="bb92d313e962c39150e26b5318be6a87"):
+        """
+        The function gets the weather for city centers with the maximum number of hotels (according to the task):
+        - for the previous 5 days, including the current one;
+        - forecast: for the next 5 days;
+        - current values;
+        API used: https://api.openweathermap.org/
+        :param dict_city-lat_long: dictionary with cities and their coordinates
+        :param days_amount: amount of days before, since historical weather data should be obtained (default = 5)
+        :param app_id: API-key from https://api.openweathermap.org/
+        :return min_temperature, max_temperature:
+        """
 
 
+        for city, lat_long in dict_city_lat_long.items():
+            lat = lat_long[0]
+            lon = lat_long[1]
 
-    dict_city_lat_long = {("AT", "Vienna"): [48.203066462500004, 16.368756425]}
+            historical_data, current_and_forecast = weather_data(lat, lon, app_id, days_amount)
+            print(f'History: {historical_data}')
+            print(f'Forecast: {current_and_forecast}')
 
-
-    ret = weather_historical_data_up_to_5_days(api_url, params, days)
-    print(f"Historical data: \n{ret}")
-
-    # Определяем дату в нужном формате, предыдущий день
-    days_before_1dt = date.today() - timedelta(days=1)
-    # Конвертируем время в формат, нужный при обращении к One Call API(openweathermap.org/), (Unix time, UTC time zone)
-    days_before_1 = int(time.mktime(days_before_1dt.timetuple()))
-
-    # То же и для предыдущих дней
-    days_before_2dt = date.today() - timedelta(days=2)
-    days_before_2 = int(time.mktime(days_before_2dt.timetuple()))
-
-    days_before_3dt = date.today() - timedelta(days=3)
-    days_before_3 = int(time.mktime(days_before_3dt.timetuple()))
-
-    days_before_4dt = date.today() - timedelta(days=4)
-    days_before_4 = int(time.mktime(days_before_4dt.timetuple()))
-
-# Значения температуры для предыдущих дней
-    previous_1_day = requests.get(f"{api_url}/timemachine", params={**params, **{"dt": days_before_1}})
-    data_1_day_before = previous_1_day.json()
-    print(f'Day1 stands for {data_1_day_before.strftime("%Y-%m-%d")}')
-
-    previous_2_days = requests.get(f"{api_url}/timemachine", params={**params, **{"dt": days_before_2}})
-    data_2_days_before = previous_2_days.json()
-    print(f'Day2 stands for {data_2_days_before.strftime("%Y-%m-%d")}')
-    previous_3_days = requests.get(f"{api_url}/timemachine", params={**params, **{"dt": days_before_3}})
-    data_3_days_before = previous_3_days.json()
-    print(f'Day3 stands for {data_3_days_before.strftime("%Y-%m-%d")}')
-    previous_4_days = requests.get(f"{api_url}/timemachine", params={**params, **{"dt": days_before_4}})
-    data_4_days_before = previous_4_days.json()
-    print(f'Day4 stands for {data_4_days_before.strftime("%Y-%m-%d")}')
-
-    new_list =[]
-    new_list.append(data_1_day_before)
-    new_list.append(data_2_days_before)
-    new_list.append(data_3_days_before)
-    new_list.append(data_4_days_before)
-
-    tr= new_list
-    print(new_list)
-
-
-
-
-
-
-
+    get_temperature(dict_city_lat_long)
 
 
 
