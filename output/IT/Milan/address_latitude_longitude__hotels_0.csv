@@ -1,0 +1,79 @@
+	Address	Id	Latitude	Longitude	Name
+0	3 Via Laietana, El Gòtic, Barcelona, Barcelona, CT, ES, 08003	1735170000000.0	45.51152	9.1241306	Barcel Milan
+1	72 Carrer de Numància, Les Corts, Barcelona, Barcelona, CT, ES, 08029	1769530000000.0	45.461177	9.191047	Brunelleschi Hotel
+2	131 Via Augusta, Sant Gervasi-Galvany, Barcelona, Barcelona, CT, ES, 08006	1795300000000.0	45.4794587	9.1951427	Windsor Hotel Milano
+3	119 Carrer de Pallars, El Parc i la Llacuna del Poblenou, Barcelona, Barcelona, CT, ES, 08018	1821070000000.0	45.4726942	9.1943911	Hotel Cavour
+4	128 Carrer la Rambla, El Gòtic, Barcelona, Barcelona, CT, ES, 08002	1846840000000.0	45.4667717	9.1871001	Hotel Clerici
+5	158 Carrer de Girona, Dreta de l'Eixample, Barcelona, Barcelona, CT, ES, 08037	1975680000000.0	45.453152	9.179172	The Yard Milano
+6	32 Carrer de Numància, Sants, Barcelona, Barcelona, CT, ES, 08029	2147480000000.0	45.43784	9.230901	Starhotels Business Palace
+7	148I Travessera de les Corts, La Maternitat i Sant Ramon, Barcelona, Barcelona, CT, ES, 08028	2199020000000.0	45.4947129	9.1418864	Best Western Hotel Mirage
+8	207 Avinguda Diagonal, El Parc i la Llacuna del Poblenou, Barcelona, Barcelona, CT, ES, 08018	2241970000000.0	45.4630685	9.1979367	NH Collection Milano President
+9	9 Carrer de Riudarenes, El Gòtic, Barcelona, Barcelona, CT, ES, 08002	2259150000000.0	45.4858877	9.2042827	Hotel Auriga
+10	106 Carrer de Villarroel, l'Antiga Esquerra de l'Eixample, Barcelona, Barcelona, CT, ES, 08011	2310690000000.0	45.4868744	9.2018407	Hotel Marconi
+11	181 Carrer de Mallorca, l'Antiga Esquerra de l'Eixample, Barcelona, Barcelona, CT, ES, 08036	2319280000000.0	45.4656023	9.1778675	Mokinba Hotels King
+12	70 Passeig de Gràcia, Dreta de l'Eixample, Barcelona, Barcelona, CT, ES, 08008	2319280000000.0	45.4720654	9.0777871	Idea Hotel Milano San Siro
+13	288 Carrer de Mallorca, Dreta de l'Eixample, Barcelona, Barcelona, CT, ES, 08037	2396590000000.0	45.4701334	9.1897405	Bulgari Hotel Milano
+14	10 Avinguda del Litoral, La Barceloneta, Barcelona, Barcelona, CT, ES, 08003	2405180000000.0	45.4699058	9.1925024	Grand Hotel et de Milan
+15	60 Carrer de Roger de Llúria, Dreta de l'Eixample, Barcelona, Barcelona, CT, ES, 08009	2413770000000.0	45.4848809	9.1596461	Qualys Hotel Nasco
+16	7 Rambla de Catalunya, Dreta de l'Eixample, Barcelona, Barcelona, CT, ES, 08007	2542620000000.0	45.4792738	9.1459546	Meli Milano
+17	74 Rue Amelot, 11e Arrondissement, Paris, Paris, IDF, FR, 75011	2817500000000.0	45.480515	9.160063	Admiral Hotel
+18	12 Rue Vercingétorix, 14e Arrondissement, Paris, Paris, IDF, FR, 75014	2843270000000.0	45.4782808	9.1997755	Mokinba Hotels Baviera
+19	11 Rue de Tilsitt, 17e Arrondissement, Paris, Paris, IDF, FR, 75017	2877630000000.0	45.4481878	9.2570459	Novotel Milano Linate Aeroporto
+20	15 Rue Édouard Manet, 13e Arrondissement, Paris, Paris, IDF, FR, 75013	2954940000000.0	45.500667	9.1445874	Radisson Blu Hotel Milan
+21	4 Rue d'Anjou, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	3066610000000.0	45.443791	9.152947	IH Hotels Milano Watt 13
+22	7 Rue Rampon, 11e Arrondissement, Paris, Paris, IDF, FR, 75011	3135330000000.0	45.4714062	9.1965303	Senato Hotel Milano
+23	207 Boulevard Raspail, 14e Arrondissement, Paris, Paris, IDF, FR, 75014	3152510000000.0	45.4472099	9.2090967	Best Western Hotel Major
+24	Galerie du Claridge, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	3195460000000.0	45.4657842	9.1895321	TownHouse Galleria
+25	Rue Intérieure, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	3332890000000.0	45.4911829	9.2393614	Nu Hotel
+26	4 Rue de Latran, 5e Arrondissement, Paris, Paris, IDF, FR, 75005	3393020000000.0	45.482442	9.1756982	Leonardo Hotel Milan City Center
+27	8 Rue Quentin-Bauchart, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	1726580000000.0	45.4642651	9.1960569	Hotel Galileo
+28	24 Rue Cadet, 9e Arrondissement, Paris, Paris, IDF, FR, 75009	1752350000000.0	45.4836517	9.2078581	Andreola Central Hotel
+29	3 Rue Christine, 6e Arrondissement, Paris, Paris, IDF, FR, 75006	1778120000000.0	45.4984161	9.1904375	Atahotel Contessa Jolanda
+30	4 Rue du Mont-Thabor, 1er Arrondissement, Paris, Paris, IDF, FR, 75001	1786710000000.0	45.4779041	9.2094965	Starhotels Ritz
+31	6 Avenue Frémiet, 16e Arrondissement, Paris, Paris, IDF, FR, 75016	1898380000000.0	45.4897688	9.1549451	Mercure Milano Regency
+32	263 Rue de Vaugirard, 15e Arrondissement, Paris, Paris, IDF, FR, 75015	1932740000000.0	45.4851889	9.198015	Four Points Sheraton Milan Center
+33	12 Rue Favart, 2e Arrondissement, Paris, Paris, IDF, FR, 75002	1984270000000.0	45.4471408	9.2070051	Grand Visconti Palace
+34	Porte d'Orléans, 14e Arrondissement, Paris, Paris, IDF, FR, 75014	2035810000000.0	45.4769923	9.1844899	Carlyle Brera Hotel
+35	19 Rue des Prêtres Saint-Germain-l'Auxerrois, 1er Arrondissement, Paris, Paris, IDF, FR, 75001	2104530000000.0	45.4862032	9.200322	Hilton Milan
+36	10 Rue Gager-Gabillot, 15e Arrondissement, Paris, Paris, IDF, FR, 75015	2156070000000.0	45.4738012	9.2239702	Hotel Dieci
+37	102 Boulevard de Grenelle, 15e Arrondissement, Paris, Paris, IDF, FR, 75015	2284920000000.0	45.4788051	9.1446276	Mokinba Hotels Montebianco
+38	38 Rue de l'Échiquier, 10e Arrondissement, Paris, Paris, IDF, FR, 75010	2362230000000.0	45.466598	9.183064	Camperio House Suites Apartments
+39	27-33 Harrington Gardens, South Kensington, London, London, ENG, GB, SW7 4	2379410000000.0	45.4638223	9.1940273	Rosa Grand Milano Starhotels Collezione
+40	109-113 Queen's Gate, South Kensington, London, London, ENG, GB, SW7 3	2413770000000.0	45.5161671	9.2272778	Hilton Garden Inn Milan North
+41	10 Pepys Street, City of London, London, London, ENG, GB, EC3N 2	2473900000000.0	45.467298	9.1846982	Antica Locanda Dei Mercanti
+42	38 Queens Gardens, Bayswater, London, London, ENG, GB, W2 3AA	2611340000000.0	45.4769167	9.196665	NH Milano Touring
+43	14 Lodge Road, St Johns Wood, London, London, ENG, GB, NW8 7	2654290000000.0	45.4725167	9.1439198	Best Western Hotel Astoria
+44	12 North Terrace, South Kensington, London, London, ENG, GB, SW7 2	2740190000000.0	45.473348	9.1910733	Palazzo Parigi Hotel Grand Spa Milano
+45	34-44 Barkston Gardens, South Kensington, London, London, ENG, GB, SW5 0	3023660000000.0	45.4747809	9.2059385	Hotel Mercure Milano Centro
+46	Richmond Way, Kensington, London, London, ENG, GB, W14 0ED	3032250000000.0	45.4580137	9.1913676	Best Western Hotel Ascot
+47	30 St James's Place, St James's, London, London, ENG, GB, SW1A 1NR	3040840000000.0	45.502453	9.2218364	Best Western Antares Hotel Concorde
+48	28 Basil Street, Chelsea, London, London, ENG, GB, SW3 1AN	3066610000000.0	45.5257221	9.2150033	Hotel degli Arcimboldi
+49	Portland Place, Marylebone, London, London, ENG, GB, W1B 1	3092380000000.0	45.4802415	9.2131919	LHP Hotel Napoleon
+50	13 Albert Embankment, Kennington, London, London, ENG, GB, SE1 7	3126740000000.0	45.5147974	9.116606	Klima Hotel Milano Fiere
+51	23 Fulton Road, Wembley, Wembley, Middlesex, ENG, GB, HA9 0GB	3161100000000.0	45.463135	9.2102	Hotel Vittoria
+52	45 Park Lane, Mayfair, London, London, ENG, GB, W1K 1PN	3169690000000.0	45.4829817	9.2041911	Colombia
+53	23 Sydney Street, Chelsea, London, London, ENG, GB, SW3 6PU	3324300000000.0	45.4611287	9.1542675	Milan Marriott Hotel
+54	111 Westminster Bridge Road, Lambeth, London, London, ENG, GB, SE1 7HR	3375840000000.0	45.46676	9.194293	Boscolo Milano Autograph Collection
+55	20 Warwick Street, Soho, London, London, ENG, GB, W1B 5NF	3384430000000.0	45.4580781	9.1924205	Hotel Lloyd
+56	Rotherhithe, London, London, ENG, GB, SE16 5	3393020000000.0	45.4501306	9.1696481	Art Hotel Navigli
+57	39 Chesterton Road, Ladbroke Grove, London, London, ENG, GB, W10 6ES	1717990000000.0	45.4841371	9.2001623	UNA Hotel Century
+58	7 Via Panfilo Castaldi, Stazione Centrale-Ponte Seveso, Milano, Milano, 25, IT, 20124	1752350000000.0	45.4802503	9.1494925	Hotel Portello Gruppo Minihotel
+59	40 Via Lazzaro Spallanzani, Buenos Aires-P. Venezia-P. Monforte, Milano, Milano, 25, IT, 20129	1812480000000.0	45.4589731	9.0687506	Hotel Silver
+60	121 Via Mecenate, Taliedo-Morsenchio-Forlanini, Milano, Milano, 25, IT, 20138	1898380000000.0	45.4872511	9.2237385	Hotel Lombardia
+61	77 Via Ludovico di Breme, Villapizzone-Cagnola-Boldinasco, Milano, Milano, 25, IT, 20156	2121710000000.0	45.4859983	9.1637603	UNA Hotel Scandinavia
+62	Via Giovanni Battista Fauchè, Sarpi, Milano, Milano, 25, IT, 20154	2138890000000.0	45.479888	9.1962982	Hotel Principe Di Savoia
+63	8 Alzaia Naviglio Grande, Porta Ticinese-Conchetta, Milano, Milano, 25, IT, 20144	2181840000000.0	45.4606597	9.1810947	Hotel Carrobbio
+64	9 Viale Murillo, San Siro, Milano, Milano, 25, IT, 20149	2405180000000.0	45.5005657	9.1383663	DoubleTree By Hilton Milan
+65	Corso Magenta, Duomo, Milano, Milano, 25, IT, 20123	2413770000000.0	45.4635445	9.2068649	Bianca Maria Palace Hotel
+66	4 Corso Giacomo Matteotti, Duomo, Milano, Milano, 25, IT, 20121	2499670000000.0	45.4510397	9.1920911	Hotel D Este
+67	4 Via Angelo Carlo Fumagalli, Porta Ticinese-Conchetta, Milano, Milano, 25, IT, 20143	2516850000000.0	45.4508673	9.1948659	Hotel Liberty
+68	164 Keizersgracht, Amsterdam-Centrum, Amsterdam, Amsterdam, NH, NL, 1015 CZ	2680060000000.0	45.488764	9.183057	Hotel VIU Milan
+69	49 Vijzelstraat, Amsterdam-Centrum, Amsterdam, Amsterdam, NH, NL, 1017 HE	2680060000000.0	45.4847398	9.2072916	Starhotels Echo
+70	6 IJdok, Amsterdam-Centrum, Amsterdam, Amsterdam, NH, NL, 1013 MM	2783140000000.0	45.5331372	9.1711019	Hotel Da Vinci
+71	Joan Muyskenweg, Oost / Watergraafsmeer, Amsterdam, Amsterdam, NH, NL, 1096	2826090000000.0	45.443502	9.1377081	Ca Bianca Hotel Corte Del Naviglio
+72	548 Herengracht, Amsterdam-Centrum, Amsterdam, Amsterdam, NH, NL, 1017 CG	2929170000000.0	45.4684251	9.1834161	UNA Hotel Cusani
+73	1 Roelof Hartstraat, Oud-Zuid, Amsterdam, Amsterdam, NH, NL, 1071 VE	2997890000000.0	45.480968	9.189977	NH Milano Palazzo Moscova
+74	17 Piet Heinkade, Zeeburg, Amsterdam, Amsterdam, NH, NL, 1019	3015070000000.0	45.4670579	9.1427822	Antares Hotel Rubens
+75	10 Roemer Visscherstraat, Oud-West, Amsterdam, Amsterdam, NH, NL, 1054 EX	3032250000000.0	45.4881471	9.2016609	Best Western Madison Hotel
+76	89 Linnaeusstraat, Oost / Watergraafsmeer, Amsterdam, Amsterdam, NH, NL, 1093 EK	3049430000000.0	45.4834133	9.1666361	Hotel Mozart
+77	34 Koninginneweg, Oud-Zuid, Amsterdam, Amsterdam, NH, NL, 1075 CZ	3169690000000.0	45.506502	9.1965192	Novotel Milano Nord Ca Granda

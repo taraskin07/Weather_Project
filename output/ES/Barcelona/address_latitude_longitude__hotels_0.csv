@@ -1,0 +1,63 @@
+	Address	Id	Latitude	Longitude	Name
+0	4 Carrer de n'Aroles, El Gòtic, Barcelona, Barcelona, CT, ES, 08002	1752350000000.0	41.3842838	2.1707092	Royal Ramblas
+1	40 Carrer de Calvet, Sant Gervasi-Galvany, Barcelona, Barcelona, CT, ES, 08021	1829660000000.0	41.3919083	2.1573318	Hotel America Barcelona
+2	8 Plaça del Duc de Medinaceli, El Gòtic, Barcelona, Barcelona, CT, ES, 08002	1864020000000.0	41.3862689	2.1291786	Aparthotel Atenea Barcelona
+3	159 Carrer de València, l'Antiga Esquerra de l'Eixample, Barcelona, Barcelona, CT, ES, 08011	1915560000000.0	41.4110056	2.1866009	Catalonia Atenas
+4	105 Carrer la Rambla, El Raval, Barcelona, Barcelona, CT, ES, 08002	1984270000000.0	41.4014399	2.2100745	NH Hesperia Barcelona del Mar
+5	11 Carrer del Pintor Fortuny, El Raval, Barcelona, Barcelona, CT, ES, 08001	2001450000000.0	41.3815028	2.1449138	Hotel Abbot
+6	25 Carrer de Loreto, Les Corts, Barcelona, Barcelona, CT, ES, 08029	2052990000000.0	41.3935967	2.1742718	Hotel Casa Bonay
+7	75 Passeig de Gràcia, Dreta de l'Eixample, Barcelona, Barcelona, CT, ES, 08008	2095940000000.0	41.3976233	2.188975	Capri by Fraser Barcelona
+8	21 Ronda de la Universitat, Dreta de l'Eixample, Barcelona, Barcelona, CT, ES, 08007	2104530000000.0	41.3930406	2.1545393	The Mirror Barcelona
+9	158 Carrer de la Ciutat de Granada, El Parc i la Llacuna del Poblenou, Barcelona, Barcelona, CT, ES, 08018	2250560000000.0	41.3962658	2.1662153	Room Mate Carla
+10	265 Carrer del Rosselló, Dreta de l'Eixample, Barcelona, Barcelona, CT, ES, 08008	2302100000000.0	41.4072812	2.1443116	Catalonia Park Putxet
+11	42 Via Laietana, S. Pere, Santa Caterina, i la Rib., Barcelona, Barcelona, CT, ES, 08003	2327870000000.0	41.3891168	2.1671986	Avenida Palace
+12	322 Gran Via de les Corts Catalanes, Font de la Guatlla, Barcelona, Barcelona, CT, ES, 08004	2388000000000.0	41.3869565	2.1665338	H10 Universitat
+13	144 Carrer de Balmes, Dreta de l'Eixample, Barcelona, Barcelona, CT, ES, 08008	2430950000000.0	41.383515	2.1407396	Acta CITY47
+14	Carrer de Barcelona, El Raval, Barcelona, Barcelona, CT, ES, 08039	2448130000000.0	41.3885274	2.1360471	NH Collection Barcelona Constanza
+15	Carrer dels Almogàvers, El Parc i la Llacuna del Poblenou, Barcelona, Barcelona, CT, ES, 08018	2473900000000.0	41.3899609	2.135684	AC Hotel Diagonal L Illa a Marriott Lifestyle Hotel
+16	278 Passeig del Taulat, Diag. Mar i el Front Mar. del Pob., Barcelona, Barcelona, CT, ES, 08019	2482490000000.0	41.3856387	2.1668274	Catalonia Ramblas 4 Sup
+17	1 Avinguda del Portal de l'Àngel, El Gòtic, Barcelona, Barcelona, CT, ES, 08002	2568390000000.0	41.3985449	2.1438237	Hotel Rekord
+18	8 Carrer de Fra Luis de Granada, Les Corts, Barcelona, Barcelona, CT, ES, 08029	2594160000000.0	41.3893478	2.1209755	AC Hotel Victoria Suites a Marriott Lifestyle Hotel
+19	9 Ronda de Sant Pere, Dreta de l'Eixample, Barcelona, Barcelona, CT, ES, 08010	2602750000000.0	41.3917169	2.1592614	Hotel Barcelona Center
+20	Avinguda del Bogatell, La Vila Olímpica del Poblenou, Barcelona, Barcelona, CT, ES, 08005	2611340000000.0	41.3832414	2.1685298	Hotel Casa Camper
+21	12 Rue de Louvois, 2e Arrondissement, Paris, Paris, IDF, FR, 75002	2680060000000.0	41.4052324	2.2117289	Attica 21 Barcelona Mar
+22	13 Rue Geoffroy Marie, 9e Arrondissement, Paris, Paris, IDF, FR, 75009	2697240000000.0	41.4036219	2.1902808	The Gates Diagonal Barcelona
+23	13 Rue François Ory, Montrouge, Hauts-de-Seine, IDF, FR, 92120	2714420000000.0	41.4038774	2.1911894	Novotel Barcelona City
+24	49 Avenue Marceau, 16e Arrondissement, Paris, Paris, IDF, FR, 75116	2748780000000.0	41.3795572	2.1425457	Gran Hotel Torre Catalunya
+25	3 Rue Lepic, 18e Arrondissement, Paris, Paris, IDF, FR, 75018	2826090000000.0	41.378751	2.17873	Catalonia Port
+26	141 Rue Saint-Honoré, 1er Arrondissement, Paris, Paris, IDF, FR, 75001	2920580000000.0	41.3802469	2.1541149	Hotel Villa Emilia
+27	7 Rue Montalembert, 7e Arrondissement, Paris, Paris, IDF, FR, 75007	2937760000000.0	41.393227	2.1927427	H10 Marina Barcelona
+28	2B Rue de la Comète, 7e Arrondissement, Paris, Paris, IDF, FR, 75007	2954940000000.0	41.3861459	2.1711594	Olivia Plaza Hotel
+29	27 Avenue du Général Leclerc, 14e Arrondissement, Paris, Paris, IDF, FR, 75014	2972120000000.0	41.3944029	2.150194	Wilson Boutique Hotel
+30	2 Impasse Sainte-Henriette, 18e Arrondissement, Paris, Paris, IDF, FR, 75018	2980710000000.0	41.3916258	2.1716378	Hotel Palace GL
+31	92 Rue de Vaugirard, 6e Arrondissement, Paris, Paris, IDF, FR, 75006	2997890000000.0	41.4034965	2.1370426	Catalonia Barcelona 505
+32	13 Rue de la Paix, 2e Arrondissement, Paris, Paris, IDF, FR, 75002	3032250000000.0	41.3841429	2.1616896	Sunotel Central
+33	8 Rue Saint-Placide, 6e Arrondissement, Paris, Paris, IDF, FR, 75006	3075200000000.0	41.3885658	2.1712991	Catalonia Square 4 Sup
+34	33 Rue Cambon, 1er Arrondissement, Paris, Paris, IDF, FR, 75001	3161100000000.0	41.4031654	2.1231637	Eurostars Angli
+35	65 Rue des Saints-Pères, 6e Arrondissement, Paris, Paris, IDF, FR, 75006	3161100000000.0	41.3865289	2.1682919	Catalonia Plaza Catalunya
+36	117 Rue Lauriston, 16e Arrondissement, Paris, Paris, IDF, FR, 75116	3204050000000.0	41.3959587	2.2008981	Hotel 4 Barcelona
+37	29 Rue de Caumartin, 9e Arrondissement, Paris, Paris, IDF, FR, 75009	3238410000000.0	41.408641	2.1478143	Hotel Ronda Lesseps
+38	7 Rue des Petits-Hôtels, 10e Arrondissement, Paris, Paris, IDF, FR, 75010	3238410000000.0	41.3859873	2.1514021	Zenit Borrell
+39	20 Rue Marbeuf, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	3324300000000.0	41.4101934	2.1695574	Ilunion Bel Art
+40	64 Rue de l'Arbre-Sec, 1er Arrondissement, Paris, Paris, IDF, FR, 75001	3384430000000.0	41.3834673	2.1712016	Hotel 1898
+41	8 Rue Duphot, 1er Arrondissement, Paris, Paris, IDF, FR, 75001	3393020000000.0	41.3888014	2.1653738	Petit Palace Museum
+42	39 Avenue de l'Opéra, 2e Arrondissement, Paris, Paris, IDF, FR, 75002	3393020000000.0	41.3830582	2.1778267	Gran Hotel Barcino
+43	28 Place des Vosges, 3e Arrondissement, Paris, Paris, IDF, FR, 75003	3418790000000.0	41.3908486	2.1680745	HCC St Moritz
+44	8 Rue Jean Goujon, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	1717990000000.0	41.390913	2.1706981	Acta Atrium Palace
+45	37 Rue de Saint-Quentin, 10e Arrondissement, Paris, Paris, IDF, FR, 75010	1769530000000.0	41.39367	2.1115418	Sansi Pedralbes
+46	20 Rue d'Antin, 2e Arrondissement, Paris, Paris, IDF, FR, 75002	1855430000000.0	41.3725246	2.1540788	Crowne Plaza Barcelona Fira Center
+47	25 Boulevard du Fort de Vaux, 17e Arrondissement, Paris, Paris, IDF, FR, 75017	1881200000000.0	41.3833541	2.1794038	Exe Laietana Palace
+48	11 Rue du 8 Mai 1945, 10e Arrondissement, Paris, Paris, IDF, FR, 75010	1915560000000.0	41.3895237	2.1490307	U232 Hotel
+49	4 Rue d'Alger, 1er Arrondissement, Paris, Paris, IDF, FR, 75001	1992860000000.0	41.3945074	2.1632659	Alma Barcelona GL
+50	2 Boulevard Garibaldi, 15e Arrondissement, Paris, Paris, IDF, FR, 75015	2027220000000.0	41.3897945	2.1660575	Eurostars Cristal Palace
+51	28 Rue Saint-Roch, 1er Arrondissement, Paris, Paris, IDF, FR, 75001	2027220000000.0	41.406146	2.2008636	The Level at Melia Barcelona Sky
+52	9 Rue Gît-le-Coeur, 6e Arrondissement, Paris, Paris, IDF, FR, 75006	2113120000000.0	41.4106944	2.136294	ABaC Restaurant Hotel Barcelona GL Monumento
+53	52 Rue Pierre Charron, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	2207610000000.0	41.37913	2.1561186	TWO Hotel Barcelona by Axel 4 Sup Adults Only
+54	2 Rue d'Amboise, 2e Arrondissement, Paris, Paris, IDF, FR, 75002	2276330000000.0	41.3799209	2.1728181	Hotel Espa a Ramblas
+55	22 Boulevard Haussmann, 9e Arrondissement, Paris, Paris, IDF, FR, 75009	2293510000000.0	41.3799929	2.1748256	Hotel DO Pla a Reial G L
+56	3B Place Saint-Sulpice, 6e Arrondissement, Paris, Paris, IDF, FR, 75006	2302100000000.0	41.3919114	2.1765438	Room Mate Gerard
+57	8 Rue de Verneuil, 7e Arrondissement, Paris, Paris, IDF, FR, 75007	2319280000000.0	41.3982129	2.1494179	Aparthotel Mariano Cubi Barcelona
+58	22 Rue de Buci, 6e Arrondissement, Paris, Paris, IDF, FR, 75006	2327870000000.0	41.3935497	2.1627098	Condes de Barcelona
+59	49 Rue Pierre Charron, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	2336460000000.0	41.3910786	2.1717285	Roger de Ll ria
+60	34 Rue de Moscou, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	2345050000000.0	41.3815625	2.1838458	H10 Port Vell 4 Sup
+61	187 Boulevard Brune, 14e Arrondissement, Paris, Paris, IDF, FR, 75014	2370820000000.0	41.39038	2.121	Upper Diagonal

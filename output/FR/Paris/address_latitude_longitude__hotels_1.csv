@@ -1,0 +1,85 @@
+	Address	Id	Latitude	Longitude	Name
+85	2 Rue de Calais, 9e Arrondissement, Paris, Paris, IDF, FR, 75009	1838250000000.0	48.8315204	2.3870797	Pullman Paris Centre Bercy
+86	17 Rue de Richelieu, 1er Arrondissement, Paris, Paris, IDF, FR, 75001	1864020000000.0	48.849147	2.3471935	Hotel Les Bulles De Paris
+87	64 Boulevard Barbès, 18e Arrondissement, Paris, Paris, IDF, FR, 75018	1881200000000.0	48.8615843	2.3620652	Hotel du Petit Moulin
+88	16 Rue d'Edimbourg, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	1924150000000.0	48.866435	2.3251076	Hotel Cambon
+89	6 Rue Pierre Demours, 17e Arrondissement, Paris, Paris, IDF, FR, 75017	1941330000000.0	48.8795947	2.3280695	Best Western Premier Op ra Li ge
+90	19 Rue du Pont Neuf, 1er Arrondissement, Paris, Paris, IDF, FR, 75001	1949920000000.0	48.8452789	2.342295	Hotel Le petit Paris
+91	36 Rue du Moulin, Vanves, Hauts-de-Seine, IDF, FR, 92170	1975680000000.0	48.8639318	2.3658744	1K Hotel
+92	8 Rue François 1er, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	1984270000000.0	48.8823111	2.3132374	L Edmond H tel
+93	1 Rue du 8 Mai 1945, 10e Arrondissement, Paris, Paris, IDF, FR, 75010	2087350000000.0	48.870994	2.3235329	Amarante Beau Manoir
+94	23 Avenue Montaigne, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	2104530000000.0	48.8649306	2.3290844	H tel Brighton Esprit de France
+95	10 Rue Chénier, 2e Arrondissement, Paris, Paris, IDF, FR, 75002	2138890000000.0	48.8668228	2.3257729	Melia Paris Vendome
+96	49 Rue La Fayette, 9e Arrondissement, Paris, Paris, IDF, FR, 75009	2173250000000.0	48.8811741	2.2948337	Westside Arc de Triomphe Hotel
+97	123 Boulevard de Sébastopol, 2e Arrondissement, Paris, Paris, IDF, FR, 75002	2181840000000.0	48.8607764	2.3427564	L Empire Paris
+98	7 Boulevard Bourdon, 4e Arrondissement, Paris, Paris, IDF, FR, 75004	2190430000000.0	48.8503493	2.3344305	H tel Recamier
+99	31 Rue de Surène, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	2199020000000.0	48.8573706	2.3314669	Hotel Verneuil Saint Germain
+100	35 Rue de Berri, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	2207610000000.0	48.8691325	2.3021659	Pershing Hall
+101	6 Rue Blaise-Desgoffe, 6e Arrondissement, Paris, Paris, IDF, FR, 75006	2241970000000.0	48.8550466	2.304583	H tel de la Bourdonnais
+102	17 Rue de Caumartin, 9e Arrondissement, Paris, Paris, IDF, FR, 75009	2250560000000.0	48.8363819	2.2897793	Vice Versa
+103	3 Rue de Ponthieu, 8e Arrondissement, Paris, Paris, IDF, FR, 75008	2259150000000.0	48.8780363	2.2864907	Hotel Le 10 BIS
+104	102 Avenue de Villiers, 17e Arrondissement, Paris, Paris, IDF, FR, 75017	2267740000000.0	48.8642689	2.3308179	Saint James Albany Paris Hotel Spa
+105	14 Rue de la Sorbonne, 5e Arrondissement, Paris, Paris, IDF, FR, 75005	2284920000000.0	48.8753359	2.3414617	Best Western Premier Op ra Faubourg Ex Hotel Jules
+106	111 Avenue de la Bourdonnais, 7e Arrondissement, Paris, Paris, IDF, FR, 75007	2345050000000.0	48.8457587	2.3243071	Victoria Palace Hotel
+107	5 Rue Hector Malot, 12e Arrondissement, Paris, Paris, IDF, FR, 75012	2370820000000.0	48.8712877	2.3191903	H tel du Minist re
+108	119 Cromwell Road, South Kensington, London, London, ENG, GB, SW7 4	2405180000000.0	48.8799239	2.3288332	H tel R de Paris Boutique Hotel
+109	117 Poplar High Street, Poplar, London, London, ENG, GB, E14 0AE	2422360000000.0	48.8482842	2.3657251	Goralska R sidences H tel Paris Bastille
+110	10 Manchester Street, Marylebone, London, London, ENG, GB, W1U 4DG	2430950000000.0	48.8538752	2.3366123	H tel De Buci by MH
+111	Cromwell Road, South Kensington, London, London, ENG, GB, SW5 0	2491080000000.0	48.8698184	2.3208729	MARQUIS Faubourg St Honor Relais Ch teaux
+112	Greenwich, London, London, ENG, GB, SE10 0	2499670000000.0	48.8601927	2.318423	H tel Bourgogne Montana by MH
+113	Knightsbridge, Belgravia, London, London, ENG, GB, W1J 7	2508260000000.0	48.8684776	2.3298238	H tel Mansart Esprit de France
+114	4-8 Belgrove Street, St Pancras, London, London, ENG, GB, WC1H 8	2516850000000.0	48.8478399	2.342254	Grand Hotel Saint Michel
+115	Great Cumberland Mews, Marylebone, London, London, ENG, GB, W1H 7DZ	2525440000000.0	48.8794646	2.2849548	Le M ridien Etoile
+116	Sundial Court, City of London, London, London, ENG, GB, EC1Y 4	2542620000000.0	48.8728351	2.3362507	Paris Marriott Opera Ambassador Hotel
+117	108 Baker Street, Marylebone, London, London, ENG, GB, W1U 6LJ	2559800000000.0	48.8699731	2.2909401	Mercure Paris Champs Elys es
+118	17 Barford Street, Islington, London, London, ENG, GB, N1 0QB	2568390000000.0	48.8494851	2.2955063	Le Parisis Paris Tour Eiffel
+119	Craven Street, Charing Cross, London, London, ENG, GB, WC2N 4JF	2594160000000.0	48.8761376	2.3572681	Le Marcel
+120	Herbrand Street, St Pancras, London, London, ENG, GB, WC1N 1	2602750000000.0	48.8920485	2.3023791	Novotel Paris 17
+121	40 Bedford Place, Bloomsbury, London, London, ENG, GB, WC1B 5	2628520000000.0	48.8370334	2.372322	Mercure Paris Bercy Biblioth que
+122	626 Chiswick High Road, Chiswick, London, London, ENG, GB, W4 5RY	2645700000000.0	48.8532269	2.3457159	Hotel Les Rives de Notre Dame
+123	Mayfair, London, London, ENG, GB, W1S 1SB	2680060000000.0	48.8644382	2.3359148	Drawing Hotel
+124	40 Marsh Wall, Isle of Dogs, London, London, ENG, GB, E14 9	2688650000000.0	48.8691686	2.3337818	H tel Horset Op ra Best Western Premier Collection
+125	40 Trinity Square, City of London, London, London, ENG, GB, EC3N 4DJ	2723010000000.0	48.8589516	2.3670407	Villa Beaumarchais
+126	Hogarth Road, South Kensington, London, London, ENG, GB, SW5 0	2731600000000.0	48.8823141	2.3316688	H tel Jos phine by Happyculture
+127	13 Seymour Street, Marylebone, London, London, ENG, GB, W1H 7	2765960000000.0	48.8354314	2.321142	Best Western Bretagne Montparnasse
+128	32 Leinster Gardens, Bayswater, London, London, ENG, GB, W2 3AN	2774550000000.0	48.8766269	2.3432886	Les Plumes Hotel
+129	100 Shoreditch High Street, Shoreditch, London, London, ENG, GB, E1 6JQ	2783140000000.0	48.8723438	2.3033378	H tel Lancaster Paris Champs Elys es
+130	Saffron Hill, City of London, London, London, ENG, GB, EC1N 8	2800320000000.0	48.8654532	2.3295231	Renaissance Paris Vendome Hotel
+131	116 Piccadilly, Mayfair, London, London, ENG, GB, W1J 7BJ	2860450000000.0	48.8794843	2.3556545	Mercure Paris Terminus Nord
+132	59 Southwark Bridge Road, Southwark, London, London, ENG, GB, SE1 9	2937760000000.0	48.8754371	2.3434586	Hotel Opera Cadet
+133	19-21 Penywern Road, Earls Court, London, London, ENG, GB, SW5 9	2946350000000.0	48.8668564	2.3286339	H tel De Vend me
+134	38 Stratton Street, Mayfair, London, London, ENG, GB, W1J 8LT	2954940000000.0	48.8652582	2.3329632	Hotel Lumen Paris Louvre
+135	84 Belgrave Road, Pimlico, London, London, ENG, GB, SW1V 2	2954940000000.0	48.8687512	2.3001692	Four Seasons Hotel George V Paris
+136	Sinclair House, Ealing, London, London, ENG, GB, W13 8	2963530000000.0	48.8566336	2.2852607	Hotel Sezz Paris
+137	49 Buckingham Palace Road, Belgravia, London, London, ENG, GB, SW1W 0	3066610000000.0	48.8661932	2.3042141	Hotel Plaza Athenee Paris
+138	19 New Bridge Street, City of London, London, London, ENG, GB, EC4V 6DB	3075200000000.0	48.8803479	2.2858242	La Villa des Ternes
+139	Hinde Mews, Marylebone, London, London, ENG, GB, W1U 2	3083790000000.0	48.8814056	2.3282568	Hotel Design Secret de Paris
+140	Spanish Place, Marylebone, London, London, ENG, GB, W1U 3	3092380000000.0	48.8196885	2.3263505	Novotel Paris 14 Porte d Orl ans
+141	49 Wembley Hill Road, Wembley, Wembley, Middlesex, ENG, GB, HA9 8	3109560000000.0	48.8661991	2.3328826	Le Roch Hotel Spa
+142	34 Cockspur Street, St James's, London, London, ENG, GB, SW1Y 5	3109560000000.0	48.8636168	2.3607998	La Chambre du Marais
+143	141 Park Lane, Mayfair, London, London, ENG, GB, W1K 7	3118150000000.0	48.8716017	2.3349768	The Chess Hotel
+144	1 Cambridge Place, Kensington, London, London, ENG, GB, W8 5PB	3126740000000.0	48.8673199	2.3656296	Crowne Plaza Paris R publique
+145	30 Bolsover Street, Fitzrovia, London, London, ENG, GB, W1W 5	3161100000000.0	48.8726335	2.3048084	H tel California Champs Elys es
+146	Bremner Road, South Kensington, London, London, ENG, GB, SW7 5	3178280000000.0	48.8731996	2.3425446	Hotel Pulitzer Paris
+147	West Side Common, Wimbledon, London, London, ENG, GB, SW19 4	3186870000000.0	48.8657687	2.3090386	Residence Du Roy
+148	185 Adelaide Road, Hampstead, London, London, ENG, GB, NW3 3	3195460000000.0	48.8565778	2.3319767	H tel Da Vinci Spa
+149	73 Gower Street, Bloomsbury, London, London, ENG, GB, WC1E 6	3221230000000.0	48.8268251	2.2912033	Mercure Paris Porte De Versailles Expo
+150	Cavell Street, Tower Hamlets, London, London, ENG, GB, E1 2	3255590000000.0	48.8797513	2.2919634	H tel Regent s Garden
+151	46 Blackfriars Road, Waterloo, London, London, ENG, GB, SE1 8	3264180000000.0	48.8399018	2.3031011	Novotel Paris Vaugirard Montparnasse
+152	1 Corbet Court, City of London, London, London, ENG, GB, EC3V 0	3307120000000.0	48.8405612	2.2991035	Hotel Eden
+153	56 Frith Street, Soho, London, London, ENG, GB, W1D 3JG	3324300000000.0	48.8500283	2.2834126	Novotel Paris Centre Tour Eiffel
+154	110 Euston Street, Camden, London, London, ENG, GB, NW1 2	3341480000000.0	48.8966167	2.3434843	Best Western Le 18 Paris
+155	1 Yew Grove, Brondesbury, London, London, ENG, GB, NW2 3	3350070000000.0	48.8309896	2.3297301	Best Western Nouvel Orl ans Montparnasse
+156	55 Queen's Gate, South Kensington, London, London, ENG, GB, SW7 5JW	3358660000000.0	48.8531641	2.3344097	H tel Madison by MH
+157	58 Kensington Road, Kensington, London, London, ENG, GB, W8 5	3375840000000.0	48.8729676	2.3081178	Bradford Elys es Astotel
+158	22 Hertsmere Road, Canary Wharf, London, London, ENG, GB, E14 4ED	3375840000000.0	48.861711	2.340674	Best Western Premier Louvre Saint Honor
+159	93 Queen's Gate, South Kensington, London, London, ENG, GB, SW7 5AB	3393020000000.0	48.8969854	2.3852745	Forest Hill Paris la Villette
+160	31-36 Leicester Square, Leicester Square, London, London, ENG, GB, WC2H 7	3418790000000.0	48.8382542	2.2903494	Mercure Paris 15 Porte de Versailles
+161	10 Largo Rio De Janeiro, Città Studi, Milano, Milano, 25, IT, 20133	1743760000000.0	48.8724588	2.3378004	Millennium Hotel Paris Opera
+162	35 Via Tortona, Porta Genova, Milano, Milano, 25, IT, 20144	1760940000000.0	48.8606187	2.344401	Maison Albar Hotel Paris C line
+163	90 Via Monte Rosa, De Angeli-Monte Rosa, Milano, Milano, 25, IT, 20149	1760940000000.0	48.8673099	2.2856528	Renaissance Paris Le Parc Trocadero Hotel
+164	2 Via Enrico Tazzoli, Porta Garibaldi-Porta Nuova, Milano, Milano, 25, IT, 20154	1786710000000.0	48.857898	2.3571978	Hotel Dupond Smith
+165	10 Via Messina, Sarpi, Milano, Milano, 25, IT, 20154	1838250000000.0	48.8178079	2.3293636	Mercure Paris Porte d Orleans
+166	9 Via San Raffaele, Duomo, Milano, Milano, 25, IT, 20121	1864020000000.0	48.8738557	2.3444232	Maxim Op ra
+167	1 Via Federico Ozanam, Buenos Aires-P. Venezia-P. Monforte, Milano, Milano, 25, IT, 20129	1864020000000.0	48.863828	2.3519345	Hotel Les Bains Paris
+168	69 Corso Sempione, Portello, Milano, Milano, 25, IT, 20149	1881200000000.0	48.8683593	2.3002117	H tel De Sers Champs Elys es Paris

@@ -24,18 +24,22 @@ def geopy_address(coordinates_list, workers_amount, api_key):
     with ThreadPoolExecutor(max_workers=workers_amount) as th:
         locations = dict(th.map(get_address, coordinates_list))
 
-
-
-    # Dictionary with coordinates and address is converted into a DataFrame.
-    df = pd.DataFrame.from_dict(locations, orient='index')
-
-    # There is no proper index and previous one is oriented wrong (columns: 'index', 0, 1).
-    df = df.reset_index()
-
-    # New index has been constructed.
-    # Now columns need to be renamed properly (columns: 'index', 0, 1 ==> 'Address', 'Latitude', 'Longitude').
-    df = df.rename(columns = {"index":"Address", 0:"Latitude", 1:"Longitude"})
+    df = pd.DataFrame(
+        locations.values(), index=locations.keys(), columns=["Latitude", "Longitude"]
+    )
+    df["Address"] = df.index
+    df = df.reset_index(drop=True)
     return df
+    # # Dictionary with coordinates and address is converted into a DataFrame.
+    # df = pd.DataFrame.from_dict(locations, orient='index')
+    #
+    # # There is no proper index and previous one is oriented wrong (columns: 'index', 0, 1).
+    # df = df.reset_index()
+    #
+    # # New index has been constructed.
+    # # Now columns need to be renamed properly (columns: 'index', 0, 1 ==> 'Address', 'Latitude', 'Longitude').
+    # df = df.rename(columns = {"index":"Address", 0:"Latitude", 1:"Longitude"})
+    # return df
 
 
 def create_csv_file_with_addresses(df1, df2, path):
@@ -92,6 +96,125 @@ def save_df_in_csv_less_than_100_notes(df, path):
 
 
 # if __name__ == '__main__':
+#
+#     api_key = 'W0oJzSg0aPkT3fAHlzAsSwKuIGeJvlOc'
+#     from getting_coordinates import get_coordinates_list
+#
+#     import pandas as pd
+#
+#     df = pd.read_csv('../../../test_files/DF_max_amount_of_hotels.csv', sep="\t", encoding="utf-8",)
+#
+#     df1 = df[223:240].reset_index(drop=True)
+#     print(df1)
+#
+#     coord = get_coordinates_list(df)
+#
+#     new_c1 = coord[223:240]
+#     # print(new_c1)
+#     # print(len(new_c1))
+#
+#     # # Combine two dataframes into one by adding columns to the final table.
+#     # # Some of the values are NaN.
+#     df2 = geopy_address(new_c1, 17, api_key)
+#     df = df1.combine_first(df2)
+#     print(df.columns)
+#
+#     # Remove rows with empty values.
+#     df = df.dropna(axis=0)
+#     unique_country_city = df["Allocation"].unique()
+#     print(df.columns)
+#
+#
+#
+#     # To make a folder "country/city",
+#     # an information is taken from "Allocation" column where the values are a tuple: (country, city).
+#     for names in unique_country_city:
+#
+#         data_proc = df.loc[df["Allocation"] == names]
+#         data_proc.reset_index(drop=True, inplace=True)
+#         del data_proc["Allocation"]
+#         del data_proc["City"]
+#         del data_proc["Country"]
+#         print(data_proc["Latitude"])
+#         # save_df_in_csv_less_than_100_notes(data_proc, output_folder_path)
+#
+#     # print(coord)
+#     # for i in range(len(coord)):
+#     #     if '48.8870573, 2.3143297' in coord[i]:
+#     #         ind = coord.index(coord[i])
+#     #         print(coord[ind])
+#     #         print(ind)
+#     # new_c2 = coord[341:347]
+#     # new_c = new_c1+new_c2
+#     # print(new_c)
+#     # print(len(new_c))
+#     # lat = []
+#     # lon = []
+#     # for rec in new_c:
+#     #     nrec = rec.split(", ")
+#     #     lat.append(nrec[0])
+#     #     lon.append(nrec[1])
+#     # print(lat)
+#     # print(lon)
+#     # # df2 = pd.DataFrame(columns=df.columns)
+#     # df2 = df[df['Latitude'].isin(lat) & df['Longitude'].isin(lon)]
+#     # print(df2.head())
+#     # print(len(df2))
+#     # for string in new_c:
+#     #     for i in range(len(df)):
+#     #         if string == f'{df.at[i, "Latitude"]}, {df.at[i, "Longitude"]}':
+#     #             concat_df = pd.concat([df2,df[i]])
+#     # print(concat_df)
+#
+#     # ndf = geopy_address(new_c, 23, api_key)
+#     # print(ndf.head(5))
+#     #
+#     # print(ndf[5:10])
+#     # print(ndf[:5])
+#     # print(ndf[10:15])
+#     # print(ndf[15:20])
+#     # print(ndf.tail(3))
+#
+#
+#
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #     # coordinates_list = [[48.1955998, 16.3826989], [47.1955998, 15.3826989]]
 #     # geolocator = MapQuest(api_key='W0oJzSg0aPkT3fAHlzAsSwKuIGeJvlOc')
 #     #
