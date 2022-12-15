@@ -2,3 +2,10 @@ black
 isort
 pytest
 pytest-sugar
+pandas
+click
+geopy
+numpy
+matplotlib
+seaborn
+requests
