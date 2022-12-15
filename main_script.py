@@ -37,7 +37,7 @@ def main(
 ):
     """The utility is designed for multi-threaded data processing,
          accumulation of results via API from the Internet and their further presentation on charts.
-    api_key="W0oJzSg0aPkT3fAHlzAsSwKuIGeJvlOc"
+    
     Initial preparation of input data (scripts folder - data_assessment):
         1. Unpacking the archive into the 'unpacked_files' folder;
         2. Creating a dataframe from unpacked files;
@@ -79,6 +79,7 @@ def main(
      {max_workers_amount} - number of threads (integer);
      {app_id} - API_OpenWeatherMap. You can get a free API key at https://openweathermap.org/appid.
      {api_key} - API_MapQuest. A free API key can be obtained at https://developer.mapquest.com/.
+    Additional key api_key="W0oJzSg0aPkT3fAHlzAsSwKuIGeJvlOc"
 
     """
     try:
@@ -90,40 +91,18 @@ def main(
     unzip(path_to_input_data)
     # Reading files and creating a dataframe object from them - project_scripts.data_assessment.preparing_data
     df = func_to_create_dataframe_from_csv("unpacked_files")
-    # print(len(df))
-    # print(df.size)
-    # print(df.tail(20))
+
     # Removing invalid entries from the dataframe - project_scripts.data_assessment.preparing_data
     df = cleaning_dataframe(df)
-    # print(len(df))
-    # print(df.size)
-    # print(df.tail(20))
-    #
+
     # Looking for cities with the most hotels in a particular country - project_scripts.data_assessment.cities_with_max_hotels
     df = cities_with_max_amount_of_hotel(df)
-    # print(len(df))
-    # print(df.head())
-    # print(df.tail(20))
-    df.to_csv(
-        f"DF_max_amount_of_hotels.csv",
-        sep="\t",
-        encoding="utf-8", index=False,
-    )
 
     # Place a list with coordinates in a variable - project_scripts.data_processing.getting_coordinates
     coordinates_list = get_coordinates_list(df)
-    # print(len(coordinates_list))
-    #
+
     # According to the list of coordinates, get a list of addresses in the form of a dataframe - project_scripts.data_processing.addresses
     df_lon_lat_address = geopy_address(coordinates_list, max_workers_amount, api_key)
-    # print(len(df_lon_lat_address))
-    # print(df_lon_lat_address.head())
-    # print(df_lon_lat_address.tail(20))
-    df_lon_lat_address.to_csv(
-        f"df_lon_lat_address.csv",
-        sep="\t",
-        encoding="utf-8", index=False,
-    )
 
     # In the folder specified via the console, place the required csv files with addresses, less than 100 entries, all in subfolders - project_scripts.data_processing.addresses
     create_csv_file_with_addresses(df, df_lon_lat_address, path_to_output_data)
