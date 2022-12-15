@@ -30,16 +30,7 @@ def geopy_address(coordinates_list, workers_amount, api_key):
     df["Address"] = df.index
     df = df.reset_index(drop=True)
     return df
-    # # Dictionary with coordinates and address is converted into a DataFrame.
-    # df = pd.DataFrame.from_dict(locations, orient='index')
-    #
-    # # There is no proper index and previous one is oriented wrong (columns: 'index', 0, 1).
-    # df = df.reset_index()
-    #
-    # # New index has been constructed.
-    # # Now columns need to be renamed properly (columns: 'index', 0, 1 ==> 'Address', 'Latitude', 'Longitude').
-    # df = df.rename(columns = {"index":"Address", 0:"Latitude", 1:"Longitude"})
-    # return df
+
 
 
 def create_csv_file_with_addresses(df1, df2, path):
