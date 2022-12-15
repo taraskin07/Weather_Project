@@ -12,6 +12,4 @@ def test_geopy_address():
         geopy_address(coordinates_list, 1, "W0oJzSg0aPkT3fAHlzAsSwKuIGeJvlOc")
     )
     addr = df["Address"].to_list()
-    assert addr == [
-        "12 Rennweg, 3. Bezirk-Landstraße, Wien, Wien, 9, AT, 1030"
-    ]
+    assert addr == ["12 Rennweg, 3. Bezirk-Landstraße, Wien, Wien, 9, AT, 1030"]

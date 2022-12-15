@@ -37,7 +37,7 @@ def main(
 ):
     """The utility is designed for multi-threaded data processing,
          accumulation of results via API from the Internet and their further presentation on charts.
-    
+
     Initial preparation of input data (scripts folder - data_assessment):
         1. Unpacking the archive into the 'unpacked_files' folder;
         2. Creating a dataframe from unpacked files;

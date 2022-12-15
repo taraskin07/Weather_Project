@@ -5,8 +5,6 @@ import pandas as pd
 import seaborn as sns
 
 
-
-
 def graph_with_min_temperature(min_temperature, path):
     """
     Constructing plots for minimum daily temperature.
@@ -14,7 +12,7 @@ def graph_with_min_temperature(min_temperature, path):
     :param path: path for plots, 'path/country/city'
     """
 
-    degree_sign = u'\N{DEGREE SIGN}'
+    degree_sign = "\N{DEGREE SIGN}"
     df_min_temperatures = pd.DataFrame(min_temperature)
     for frame in df_min_temperatures:
         country, city = frame
@@ -40,7 +38,7 @@ def graph_with_max_temperature(max_temperature, path):
     :param path: path for plots, 'path/country/city'
     """
 
-    degree_sign = u'\N{DEGREE SIGN}'
+    degree_sign = "\N{DEGREE SIGN}"
     df_max_temperatures = pd.DataFrame(max_temperature)
     for frame in df_max_temperatures:
         country, city = frame
@@ -57,6 +55,3 @@ def graph_with_max_temperature(max_temperature, path):
         file_path = os.path.join(whole_path, f"max_temperature_{city}")
         fig.savefig(f"{file_path}.png")
         plt.clf()
-
-
-

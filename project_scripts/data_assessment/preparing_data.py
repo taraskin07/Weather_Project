@@ -50,8 +50,3 @@ def cleaning_dataframe(frame):
     clean_frame = frame.drop(index_list_to_drop_in_dataframe)
     clean_frame.reset_index(drop=True, inplace=True)
     return clean_frame
-
-
-
-
-

@@ -1,6 +1,8 @@
 import time
 from datetime import date, datetime, timedelta
+
 import requests
+
 
 def day(day_num):
     """
@@ -12,7 +14,6 @@ def day(day_num):
     day(-1) ==> return yesterday's date (UTC time zone)
     day(1) ==> return tomorrow's date (UTC time zone)
     """
-
 
     # Determine the date in the desired format.
     utc_day = datetime.utcnow().date() + timedelta(days=day_num)
@@ -51,7 +52,7 @@ def weather_historical_data_up_to_5_days(api_url, params, days_amount):
         else:
             print(f"Days value must be in range from 1 to 5 days!")
     except ValueError:
-        print(f'Days value must be integer from 1 to 5.')
+        print(f"Days value must be integer from 1 to 5.")
 
 
 def weather_data(lat, lon, app_id, days_amount):
@@ -68,7 +69,6 @@ def weather_data(lat, lon, app_id, days_amount):
     :return historical_data, current_and_forecast_data: tuple of dictionaries
     """
 
-
     # Base url for One Call API
     api_url = "https://api.openweathermap.org/data/2.5/onecall"
 
@@ -80,7 +80,6 @@ def weather_data(lat, lon, app_id, days_amount):
         "exclude": "minutely, alerts",
     }
 
-
     try:
         if requests.get(api_url, params=params):
             # Temperature values for the current day and forecast for 5 days
@@ -88,14 +87,19 @@ def weather_data(lat, lon, app_id, days_amount):
             current_and_forecast_data = current_and_forecast_weather.json()
 
             # Historical temperature values for the last 5 days
-            historical_data = weather_historical_data_up_to_5_days(api_url, params, days_amount)
+            historical_data = weather_historical_data_up_to_5_days(
+                api_url, params, days_amount
+            )
 
             return historical_data, current_and_forecast_data
 
     except requests.exceptions.RequestException as ex:
         print(f"Exception {ex}")
 
-def get_temperature(dict_city_lat_long, app_id="bb92d313e962c39150e26b5318be6a87", days_amount=5):
+
+def get_temperature(
+    dict_city_lat_long, app_id="bb92d313e962c39150e26b5318be6a87", days_amount=5
+):
     """
     The function gets the weather for city centers with the maximum number of hotels (according to the task).
     Moreover, minimum and maximum temperature daily values.
@@ -117,7 +121,9 @@ def get_temperature(dict_city_lat_long, app_id="bb92d313e962c39150e26b5318be6a87
         lat = lat_long[0]
         lon = lat_long[1]
         # Calling weather_data(lat, lon, app_id, days_amount) function to get the weather for city coordinates.
-        historical_data, current_and_forecast = weather_data(lat, lon, app_id, days_amount)
+        historical_data, current_and_forecast = weather_data(
+            lat, lon, app_id, days_amount
+        )
 
         # Creating dictionaries inside the resulting ones for each city of interest.
         min_temperature[city] = dict()
@@ -125,7 +131,9 @@ def get_temperature(dict_city_lat_long, app_id="bb92d313e962c39150e26b5318be6a87
 
         # Finding historical min and max daily temperature values.
         for days_before in historical_data[::-1]:
-            date_utc = datetime.utcfromtimestamp(days_before['current']["dt"]).strftime("%Y-%m-%d")
+            date_utc = datetime.utcfromtimestamp(days_before["current"]["dt"]).strftime(
+                "%Y-%m-%d"
+            )
             min_temp = min([t["temp"] for t in days_before["hourly"]])
             max_temp = max([t["temp"] for t in days_before["hourly"]])
 
@@ -135,21 +143,14 @@ def get_temperature(dict_city_lat_long, app_id="bb92d313e962c39150e26b5318be6a87
 
         # Finding current and forecast min and max daily temperature values.
         for days_ahead in range(days_amount + 1):
-            date_utc = datetime.utcfromtimestamp(current_and_forecast["daily"][days_ahead]['dt']).strftime("%Y-%m-%d")
+            date_utc = datetime.utcfromtimestamp(
+                current_and_forecast["daily"][days_ahead]["dt"]
+            ).strftime("%Y-%m-%d")
             max_temp = current_and_forecast["daily"][days_ahead]["temp"]["max"]
             min_temp = current_and_forecast["daily"][days_ahead]["temp"]["min"]
 
             # Adding values to the dictionaries.
             min_temperature[city][date_utc] = min_temp
             max_temperature[city][date_utc] = max_temp
-    
+
     return min_temperature, max_temperature
-
-
-
-
-
-
-
-
-

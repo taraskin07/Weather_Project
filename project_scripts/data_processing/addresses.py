@@ -32,7 +32,6 @@ def geopy_address(coordinates_list, workers_amount, api_key):
     return df
 
 
-
 def create_csv_file_with_addresses(df1, df2, path):
     """
     The function to combine a dataframe with cities with a large number of hotels
@@ -169,41 +168,6 @@ def save_df_in_csv_less_than_100_notes(df, path):
 #
 #
 #
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #     # coordinates_list = [[48.1955998, 16.3826989], [47.1955998, 15.3826989]]
