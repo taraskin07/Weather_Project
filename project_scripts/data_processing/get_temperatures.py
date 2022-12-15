@@ -142,8 +142,8 @@ def get_temperature(dict_city_lat_long, app_id="bb92d313e962c39150e26b5318be6a87
             # Adding values to the dictionaries.
             min_temperature[city][date_utc] = min_temp
             max_temperature[city][date_utc] = max_temp
-
-        return min_temperature, max_temperature
+    
+    return min_temperature, max_temperature
 
 
 
