@@ -25,9 +25,9 @@ from project_scripts.post_processing import post_processing
 
 
 @click.command()
-@click.argument("path_to_input_data")  # Путь для исходных данных
-@click.argument("path_to_output_data")  # Путь для полученных данных
-@click.argument("max_workers_amount")  # Количество потоков
+@click.argument("path_to_input_data")  # Path to input data
+@click.argument("path_to_output_data")  # Path to output data
+@click.argument("max_workers_amount")  # Number of threads
 def main(
     path_to_input_data,
     path_to_output_data,
@@ -35,88 +35,88 @@ def main(
     api_key="W0oJzSg0aPkT3fAHlzAsSwKuIGeJvlOc",
     app_id="bb92d313e962c39150e26b5318be6a87",
 ):
-    """Утилита предназначена для многопоточной обработки данных,
-        аккумулирования результатов через API из Интернета и их дальнейшего представления на графиках.
+    """The utility is designed for multi-threaded data processing,
+         accumulation of results via API from the Internet and their further presentation on charts.
 
-    Первичная подготовка входных данных для использования data_assessment:
-        1. Распаковка архива в папку 'unpacked_files';
-        2. Создание dataframe из распакованных файлов;
-        3. Исключение из файлов записей, содержащих некорректные/пустые значения;
-        4. Поиск городов с максимальным количеством отелей.
+    Initial preparation of input data (scripts folder - data_assessment):
+        1. Unpacking the archive into the 'unpacked_files' folder;
+        2. Creating a dataframe from unpacked files;
+        3. Exclusion from files of records containing incorrect/empty values;
+        4. Search for cities with the maximum number of hotels.
 
-    Обработка данных:
+    Data processing (folder - data_processing):
 
-        5. Получение географического адреса для каждого из отелей в городах с максимальным количеством отелей
-        в многопоточном режиме, при помощи пакета geopy;
-        6. Формирование списка отелей (название, адрес, широта, долгота) в формате CSV в файлах, содержащих не более 100 записей в каждом;
-        7. Файлы сохраняются в каталог со следующей структурой: {output_folder}\{country}\{city};
-        8. В городах с максимальным количеством отелей вычисляется географический центр области города, равноудаленный от крайних отелей;
-        9. Получение для центров городов при помощи стороннего сервиса (openweathermap.org) показателей температуры:
-            - исторических: за предыдущие 5 дней, текущих включительно;
-            - прогноз: на последующие 5 дней;
-            - текущих значений.
-        10. Построение графиков с минимальной и максимальной температурой, помещаемых в каталог {output_folder}\{country}\{city}.
+        5. Getting the geographic address for each of the hotels in the cities with the maximum number of hotels
+         in multithread mode, using the geopy package;
+        6. Creation a list of hotels (name, address, latitude, longitude) in CSV format in files containing no more than 100 entries each;
+        7. Files are saved to a directory with the following structure: {output_folder}\{country}\{city};
+        8. In cities with the maximum number of hotels, the geographical center of the city area is calculated, equidistant from the extreme hotels;
+        9. Obtaining temperature indicators for city centers using a third-party service (openweathermap.org):
+            - historical: for the previous 5 days;
+            - forecast: for the next 5 days;
+            - current values.
+        10. Plotting the minimum and maximum temperatures placed in the {output_folder}\{country}\{city} directory.
 
-    Пост-процессинг:
-        Для всех вычисленных центров (городов) находятся:
-        11. Город и день наблюдения с максимальной температурой за рассматриваемый период;
-        12. Город с максимальным изменением максимальной температуры;
-        13. Город и день наблюдения с минимальной температурой за рассматриваемый период;
-        14. Город и день с максимальной разницей между максимальной и минимальной температурой.
-        Результаты помещаются в *.csv файлы в каталог {output_folder}\{post_processing}
+    Post-processing (post_processing.py):
+        For all calculated centers (cities) it is necessary to find:
+        11. City and day of observation with the maximum temperature for the period under consideration;
+        12. The city with the maximum change in maximum temperature;
+        13. City and day of observation with the minimum temperature for the period under consideration;
+        14. The city and day with the maximum difference between the maximum and minimum temperatures.
+        The results are placed in *.csv files in the directory {output_folder}\{post_processing}
 
-    Основной скрипт для запуска консольной утилиты расположен в корневом каталоге проекта: main_script.py
+    The main script for running the console utility is located in the root directory of the project: main_script.py
 
-    Для запуска скрипта необходимо выполнить команду:
+    To run the script, enter the following command:
 
         python main_script.py data/hotels.zip {output_folder} {max_workers_amount} {api_key} {app_id}
-        или
+        or
         python3 main_script.py data/hotels.zip {output_folder} {max_workers_amount} {api_key} {app_id}
 
-    Где:
-     data/hotels.zip - путь к папке с входными данными;
-     {output_folder} - название папки с выходными данными;
-     {max_workers_amount} - число потоков (целое);
-     {app_id} - API_OpenWeatherMap. Бесплатный API-ключ можно получить на https://openweathermap.org/appid.
-     {api_key} - API_OpenMapQuest. Бесплатный API-ключ можно получить на https://developer.mapquest.com/.
+    Where:
+     data/hotels.zip - path to the folder with input data;
+     {output_folder} - the name of the output folder;
+     {max_workers_amount} - number of threads (integer);
+     {app_id} - API_OpenWeatherMap. You can get a free API key at https://openweathermap.org/appid.
+     {api_key} - API_MapQuest. A free API key can be obtained at https://developer.mapquest.com/.
 
     """
     try:
         max_workers_amount = int(max_workers_amount)
     except ValueError:
-        print("Количество потоков должно быть числом!")
+        print("The number of threads must be an integer!")
 
-    # Ввели в консоли путь до файла, распаковываем архив - project_scripts.data_assessment.preparing_data
+    # The path to the file is entered via CLI, unpack the archive - project_scripts.data_assessment.preparing_data
     unzip(path_to_input_data)
-    # Читаем файлы и создаем из них объект dataframe - project_scripts.data_assessment.preparing_data
+    # Reading files and creating a dataframe object from them - project_scripts.data_assessment.preparing_data
     df = func_to_create_dataframe_from_csv("unpacked_files")
 
-    # Убираем неправильные записи из dataframe - project_scripts.data_assessment.preparing_data
+    # Removing invalid entries from the dataframe - project_scripts.data_assessment.preparing_data
     df = cleaning_dataframe(df)
 
-    # Ищем города, в которых больше всего отелей в отдельной стране - project_scripts.data_assessment.cities_with_max_hotels
+    # Looking for cities with the most hotels in a particular country - project_scripts.data_assessment.cities_with_max_hotels
     df = cities_with_max_amount_of_hotel(df)
 
-    # Помещаем в переменную список с коордниатами - project_scripts.data_processing.getting_coordinates
+    # Place a list with coordinates in a variable - project_scripts.data_processing.getting_coordinates
     coordinates_list = get_coordinates_list(df)
 
-    # По списку координат получаем список адресов в виде dataframe - project_scripts.data_processing.addresses
+    # According to the list of coordinates, get a list of addresses in the form of a dataframe - project_scripts.data_processing.addresses
     df_lon_lat_address = geopy_address(coordinates_list, max_workers_amount, api_key)
 
-    # В указанную через консоль папку помещаем требуемые csv файлы с адресами, меньше 100 записей, все в подпапках - project_scripts.data_processing.addresses
+    # In the folder specified via the console, place the required csv files with addresses, less than 100 entries, all in subfolders - project_scripts.data_processing.addresses
     create_csv_file_with_addresses(df, df_lon_lat_address, path_to_output_data)
 
-    # Находим центр координат для каждого города из топ по количеству отелей и создаем из этого словарь - project_scripts.data_processing.getting_coordinates
+    # Find the center of coordinates for each city from the top by the number of hotels and create a dictionary from this - project_scripts.data_processing.getting_coordinates
     central_coordinates_dict = center_coordinates(df)
 
-    # Получаем температуры для центров городов с максимальным количеством отелей на разные дни - project_scripts.data_processing.get_temperatures
+    # Getting temperatures for city centers with the maximum number of hotels on different days - project_scripts.data_processing.get_temperatures
     min_temperature, max_temperature = get_temperature(central_coordinates_dict, app_id)
 
-    # Строим графики температуры от даты - project_scripts.data_processing.plots_min_max_temp
+    # Build temperature graphs from the date - project_scripts.data_processing.plots_min_max_temp
     graph_with_min_temperature(min_temperature, path_to_output_data)
     graph_with_max_temperature(max_temperature, path_to_output_data)
 
-    # Пост-процессинг project_scripts.post_processing
+    # Post-processing - project_scripts.post_processing
     post_processing(max_temperature, min_temperature, path_to_output_data)
 
 

@@ -10,6 +10,8 @@ def find_day_and_city_with_max_temperature(max_temperature):
     :param path: path for csv file
     :return:
     """
+
+
     df = pd.DataFrame(max_temperature)
     city_with_max_temperature = df.max()[df.max() == df.max(axis=1).max()].index
     data_max_temperature = df.idxmax()[city_with_max_temperature][0]
@@ -38,6 +40,8 @@ def find_city_with_max_difference_in_max_temperature(max_temperature):
     :param path: path for csv file
     :return:
     """
+
+
     df = pd.DataFrame(max_temperature)
     max_temp = df.max()
     min_temp = df.min()
@@ -66,6 +70,8 @@ def find_day_and_city_with_min_temperature(min_temperature):
     :param path: path for csv file
     :return:
     """
+
+
     df = pd.DataFrame(min_temperature)
     city_with_min_temperature = df.min()[df.min() == df.min(axis=1).min()].index
     data_min_temperature = df.idxmin()[city_with_min_temperature][0]
@@ -98,6 +104,8 @@ def find_day_and_city_with_max_difference_in_temperature(
     :param path: path for csv file
     :return:
     """
+
+
     df_max_temp = pd.DataFrame(max_temperature)
     df_min_temp = pd.DataFrame(min_temperature)
     df_difference = df_max_temp - df_min_temp
@@ -129,6 +137,8 @@ def find_day_and_city_with_max_difference_in_temperature(
 
 
 def post_processing(max_temperature, min_temperature, path):
+
+
     path_to_output = os.path.join(path, "post_processing")
     os.makedirs(f"{path_to_output}", exist_ok=True)
 
