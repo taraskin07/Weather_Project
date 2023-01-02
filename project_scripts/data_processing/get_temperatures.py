@@ -6,7 +6,6 @@ import requests
 
 def day(day_num):
 
-
     """
     This class is used to convert the time data into an appropriate format for One Call API(openweathermap.org/).
 
@@ -30,7 +29,6 @@ def day(day_num):
 
 
 def weather_historical_data_up_to_5_days(api_url, params, days_amount):
-
 
     """
     The function gets the historical weather data for coordinates given.

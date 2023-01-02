@@ -83,7 +83,6 @@ def main(
 
     """
 
-
     try:
         max_workers_amount = int(max_workers_amount)
     except ValueError:

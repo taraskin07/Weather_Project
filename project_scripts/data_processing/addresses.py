@@ -17,7 +17,7 @@ def geopy_address(coordinates_list, workers_amount, api_key):
     :return df: dataframe with address and coordinates
     """
 
-    #Using MapQuest service.
+    # Using MapQuest service.
     geolocator = MapQuest(api_key=api_key)
 
     # Counter for empty responses if any.
@@ -35,11 +35,11 @@ def geopy_address(coordinates_list, workers_amount, api_key):
         get_address = RateLimiter(geolocator.reverse, min_delay_seconds=delay)
         location = get_address(coord, exactly_one=True)
         get_address = location.address
-        if get_address == '':
+        if get_address == "":
             nonlocal empty_address_counter
             empty_address_counter += 1
-            get_address = f'Empty response for address request #{empty_address_counter}'
-        latit, longit = coord.split(', ')
+            get_address = f"Empty response for address request #{empty_address_counter}"
+        latit, longit = coord.split(", ")
         return get_address, (latit, longit)
 
     with ThreadPoolExecutor(max_workers=workers_amount) as th:
@@ -71,16 +71,15 @@ def create_csv_file_with_addresses(df1, df2, path):
     :return:
     """
 
-
     # Making sure that all significant variables of the same and desired format in both dataframes to merge (lan/lot - string).
-    df1['Latitude'] = df1['Latitude'].astype(str)
-    df1['Longitude'] = df1['Longitude'].astype(str)
-    df2['Latitude'] = df2['Latitude'].astype(str)
-    df2['Longitude'] = df2['Longitude'].astype(str)
+    df1["Latitude"] = df1["Latitude"].astype(str)
+    df1["Longitude"] = df1["Longitude"].astype(str)
+    df2["Latitude"] = df2["Latitude"].astype(str)
+    df2["Longitude"] = df2["Longitude"].astype(str)
 
     # Merging two dataframes into one by adding columns to the final table where 'Latitude' and 'Longitude' values are match.
     # Inner join on lat/lon (merge).
-    df = pd.merge(df1, df2, how='inner', on=['Latitude', 'Longitude'])
+    df = pd.merge(df1, df2, how="inner", on=["Latitude", "Longitude"])
 
     # Remove rows with empty values if any.
     df = df.dropna(axis=0)
@@ -117,5 +116,3 @@ def save_df_in_csv_less_than_100_notes(df, path):
             sep="\t",
             encoding="utf-8",
         )
-
-

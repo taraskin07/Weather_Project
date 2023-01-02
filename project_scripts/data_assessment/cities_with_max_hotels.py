@@ -1,6 +1,5 @@
 def recursion_func(df, df_allocation, precision=2):
 
-
     """
     This function clean the initial dataset (param: df) from coordinates, related to different cities with the same name in the same country,
     with the help of subset dataframe (param: df_allocation),
@@ -30,8 +29,8 @@ def recursion_func(df, df_allocation, precision=2):
     # For each coordinate in a subset for specific allocation it is necessary to establish whether it is inside the valid value range or not.
     for index, row in df_allocation.iterrows():
 
-        latitude=row['Latitude']
-        longitude=row['Longitude']
+        latitude = row["Latitude"]
+        longitude = row["Longitude"]
 
         # If some value is outside the valid range we need to understand what is the most common coordinate value.
         if not lower_lat < float(latitude) < upper_lat:
@@ -40,24 +39,26 @@ def recursion_func(df, df_allocation, precision=2):
             max_difference_lat_list = []
 
             # Difference for each value from the most common one.
-            max_difference_lat=0
+            max_difference_lat = 0
 
             # Finding the most common value of coordinate.
             for index, row in df_allocation.iterrows():
-                lat = row['Latitude']
+                lat = row["Latitude"]
                 # Coordinates differs from each other, but if they will be rounded to the integer part, then for the most part they will be the same.
                 lat = round(lat, 0)
                 max_difference_lat_list.append(lat)
-            most_common_value_lat = max(set(max_difference_lat_list), key=max_difference_lat_list.count)
+            most_common_value_lat = max(
+                set(max_difference_lat_list), key=max_difference_lat_list.count
+            )
 
             # Finding the value that differs the most from the most common coordinate
             for index, row in df_allocation.iterrows():
-                value = abs(abs(row['Latitude'])-abs(most_common_value_lat))
+                value = abs(abs(row["Latitude"]) - abs(most_common_value_lat))
                 if value > max_difference_lat:
                     max_difference_lat = value
                     # Both dataframes have column with IDs which identify the rows.
                     # Eventually the ID for the most difference will be saved in 'id_m' variable.
-                    id_m = row['Id']
+                    id_m = row["Id"]
 
             # This row (corresponding to specific ID) now deleted from both initial dataframe and its subset.
             df_allocation = df_allocation[df_allocation.Id != id_m]
@@ -75,17 +76,19 @@ def recursion_func(df, df_allocation, precision=2):
             # Difference for each value from the most common one.
             max_difference_lon = 0
             for index, row in df_allocation.iterrows():
-                lon = row['Longitude']
+                lon = row["Longitude"]
                 lon = round(lon, 0)
                 max_difference_lon_list.append(lon)
-            most_common_value_lon = max(set(max_difference_lon_list), key=max_difference_lon_list.count)
+            most_common_value_lon = max(
+                set(max_difference_lon_list), key=max_difference_lon_list.count
+            )
 
             # Finding the most common value of coordinate.
             for index, row in df_allocation.iterrows():
-                value = abs(abs(row['Longitude'])-abs(most_common_value_lon))
+                value = abs(abs(row["Longitude"]) - abs(most_common_value_lon))
                 if value > max_difference_lon:
                     max_difference_lon = value
-                    id_m = row['Id']
+                    id_m = row["Id"]
             # Again this row (corresponding to specific ID) now deleted from both initial dataframe and its subset.
             df_allocation = df_allocation[df_allocation.Id != id_m]
             df = df[df.Id != id_m]
@@ -94,8 +97,8 @@ def recursion_func(df, df_allocation, precision=2):
     # After all procedures the initial dataframe without irrelevant rows for particular allocation is returned.
     return df
 
-def city_location_check(df, precision=2):
 
+def city_location_check(df, precision=2):
 
     """
     This function clean the initial dataset (param: df) from coordinates,
@@ -109,28 +112,27 @@ def city_location_check(df, precision=2):
     :return df: clean dataframe, without irrelevant rows
     """
 
-
     # Finding list of uniqie allocations.
     df_allocation = df["Allocation"].unique()
-    df_allocation=list(map(tuple, df_allocation))
+    df_allocation = list(map(tuple, df_allocation))
 
     # Constructing a subset dataframe.
     for allocation in df_allocation:
-        df_allocation = df.loc[df['Allocation'] == allocation]
+        df_allocation = df.loc[df["Allocation"] == allocation]
 
         # Launching the recursion_func for each allocation.
         df = recursion_func(df, df_allocation)
 
     return df
-def cities_with_max_amount_of_hotel(df):
 
+
+def cities_with_max_amount_of_hotel(df):
 
     """
     This function finds cities with maximum amount of hotels in a particular country.
     :param df: dataframe
     :return df_sorted: sorted dataframe with cities that have maximum amount of hotels
     """
-
 
     # Getting object "Series", this object is sorted by country and city. Creating the dataframe from "Series".
     # Adding "Size" column with values that reflect amount od hotels in the city.
@@ -158,5 +160,3 @@ def cities_with_max_amount_of_hotel(df):
     df_max_hotels = city_location_check(df_sorted)
 
     return df_max_hotels
-
-

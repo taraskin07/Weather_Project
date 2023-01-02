@@ -1,4 +1,5 @@
 import os
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -15,7 +16,7 @@ def graph_with_min_temperature(min_temperature, path):
     for frame in min_temperature:
 
         country, city = frame
-        temp_dict= min_temperature[frame]
+        temp_dict = min_temperature[frame]
 
         ax = sns.lineplot(x=temp_dict.keys(), y=temp_dict.values())
 
@@ -39,8 +40,6 @@ def graph_with_min_temperature(min_temperature, path):
         plt.clf()
 
 
-
-
 def graph_with_max_temperature(max_temperature, path):
     """
     Constructing plots for maximum daily temperature.
@@ -52,7 +51,7 @@ def graph_with_max_temperature(max_temperature, path):
 
     for frame in max_temperature:
 
-        temp_dict= max_temperature[frame]
+        temp_dict = max_temperature[frame]
         country, city = frame
 
         ax = sns.lineplot(x=temp_dict.keys(), y=temp_dict.values())
@@ -75,5 +74,3 @@ def graph_with_max_temperature(max_temperature, path):
         file_path = os.path.join(whole_path, f"max_temperature_{city}")
         fig.savefig(f"{file_path}.png")
         plt.clf()
-
-
