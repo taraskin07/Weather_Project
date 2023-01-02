@@ -71,13 +71,21 @@ def create_csv_file_with_addresses(df1, df2, path):
     :return:
     """
 
-    # Combine two dataframes into one by adding columns to the final table.
-    # Some of the values are NaN.
-    df = df1.combine_first(df2)
 
-    # Remove rows with empty values.
+    # Making sure that all significant variables of the same and desired format in both dataframes to merge (lan/lot - string).
+    df1['Latitude'] = df1['Latitude'].astype(str)
+    df1['Longitude'] = df1['Longitude'].astype(str)
+    df2['Latitude'] = df2['Latitude'].astype(str)
+    df2['Longitude'] = df2['Longitude'].astype(str)
+
+    # Merging two dataframes into one by adding columns to the final table where 'Latitude' and 'Longitude' values are match.
+    # Inner join on lat/lon (merge).
+    df = pd.merge(df1, df2, how='inner', on=['Latitude', 'Longitude'])
+
+    # Remove rows with empty values if any.
     df = df.dropna(axis=0)
-    unique_country_city = df["Allocation"].unique()
+
+    unique_country_city = df["Allocation"].unique().tolist()
 
     # To make a folder "country/city",
     # an information is taken from "Allocation" column where the values are a tuple: (country, city).

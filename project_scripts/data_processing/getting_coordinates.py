@@ -15,6 +15,7 @@ def center_coordinates(df):
 
     # Obtaining a dictionary where each city corresponds to geometric center coordinates.
     new_dict = df.set_index("Allocation").T.to_dict("list")
+
     return new_dict
 
 
