@@ -5,7 +5,7 @@ pytest-sugar
 pandas
 click
 geopy
-numpy
+numpy==1.21.5
 matplotlib
-seaborn
+seaborn==0.11.2
 requests

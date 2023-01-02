@@ -82,6 +82,7 @@ def main(
     Additional key api_key="W0oJzSg0aPkT3fAHlzAsSwKuIGeJvlOc"
 
     """
+
     try:
         max_workers_amount = int(max_workers_amount)
     except ValueError:
@@ -89,6 +90,7 @@ def main(
 
     # The path to the file is entered via CLI, unpack the archive - project_scripts.data_assessment.preparing_data
     unzip(path_to_input_data)
+
     # Reading files and creating a dataframe object from them - project_scripts.data_assessment.preparing_data
     df = func_to_create_dataframe_from_csv("unpacked_files")
 

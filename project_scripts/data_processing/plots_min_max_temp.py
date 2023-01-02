@@ -1,7 +1,6 @@
 import os
 
 import matplotlib.pyplot as plt
-import pandas as pd
 import seaborn as sns
 
 
@@ -13,15 +12,25 @@ def graph_with_min_temperature(min_temperature, path):
     """
 
     degree_sign = "\N{DEGREE SIGN}"
-    df_min_temperatures = pd.DataFrame(min_temperature)
-    for frame in df_min_temperatures:
+
+    for frame in min_temperature:
+
         country, city = frame
-        ax = sns.lineplot(x=df_min_temperatures.index, y=df_min_temperatures[frame])
-        plt.xticks(rotation=45)
-        plt.subplots_adjust(bottom=0.3)
+        temp_dict = min_temperature[frame]
+
+        ax = sns.lineplot(x=temp_dict.keys(), y=temp_dict.values())
+
+        plt.xticks(ha="right", rotation=45)
+        plt.subplots_adjust(bottom=0.25)
+
         ax.set_title("Minimum temperature daily values", fontsize=14)
-        ax.set_xlabel("Date", fontsize=12)
-        ax.set_ylabel(f"Temperature, {degree_sign}C", fontsize=12)
+
+        ax.set_xlabel("Date", fontsize=14)
+        plt.xticks(fontsize=9)
+
+        ax.set_ylabel(f"Temperature, {degree_sign}C", fontsize=14)
+        plt.yticks(fontsize=12)
+
         fig = ax.get_figure()
         path_part = os.path.join(path, country)
         whole_path = os.path.join(path_part, city)
@@ -39,15 +48,25 @@ def graph_with_max_temperature(max_temperature, path):
     """
 
     degree_sign = "\N{DEGREE SIGN}"
-    df_max_temperatures = pd.DataFrame(max_temperature)
-    for frame in df_max_temperatures:
+
+    for frame in max_temperature:
+
+        temp_dict = max_temperature[frame]
         country, city = frame
-        ax = sns.lineplot(x=df_max_temperatures.index, y=df_max_temperatures[frame])
-        plt.xticks(rotation=45)
+
+        ax = sns.lineplot(x=temp_dict.keys(), y=temp_dict.values())
+
+        plt.xticks(ha="right", rotation=45)
         plt.subplots_adjust(bottom=0.25)
+
         ax.set_title("Maximum temperature daily values", fontsize=14)
-        ax.set_xlabel("Date", fontsize=12)
+
+        ax.set_xlabel("Date", fontsize=14)
+        plt.xticks(fontsize=9)
+
         ax.set_ylabel(f"Temperature, {degree_sign}C", fontsize=12)
+        plt.yticks(fontsize=12)
+
         fig = ax.get_figure()
         path_part = os.path.join(path, country)
         whole_path = os.path.join(path_part, city)

@@ -1,14 +1,17 @@
 import time
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
 
 import requests
 
 
 def day(day_num):
+
     """
     This class is used to convert the time data into an appropriate format for One Call API(openweathermap.org/).
+
     :param day_num: int or str(with number) corresponding to date
     :return date: date in format for One Call API(openweathermap.org/) - (Unix time, UTC time zone)
+
     Example of usage:
     day(0) ==> return today's date (UTC time zone)
     day(-1) ==> return yesterday's date (UTC time zone)
@@ -26,9 +29,11 @@ def day(day_num):
 
 
 def weather_historical_data_up_to_5_days(api_url, params, days_amount):
+
     """
     The function gets the historical weather data for coordinates given.
     API used: https://openweathermap.org/api/one-call-api
+
     :param api_url: One Call Api url
     :param params: 'get' method parameters for the request
     :param days_amount: amount of +/- days (relative to today) for which weather data should be obtained (default = 5)
@@ -62,6 +67,7 @@ def weather_data(lat, lon, app_id, days_amount):
         - forecast: for the next 5 days;
         - current values;
     API used: https://openweathermap.org/api/one-call-api
+
     :param lat: latitude
     :param lon: longtitude
     :param app_id: API-key from https://api.openweathermap.org/

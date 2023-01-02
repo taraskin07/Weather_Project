@@ -7,7 +7,7 @@ geopy_address = adrss.geopy_address
 
 
 def test_geopy_address():
-    coordinates_list = [[48.1955998, 16.3826989]]
+    coordinates_list = ["48.1955998, 16.3826989"]
     df = pd.DataFrame(
         geopy_address(coordinates_list, 1, "W0oJzSg0aPkT3fAHlzAsSwKuIGeJvlOc")
     )
