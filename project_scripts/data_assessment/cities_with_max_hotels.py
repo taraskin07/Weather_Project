@@ -1,7 +1,7 @@
 def recursion_func(df, df_allocation, precision=2):
 
     """
-    This function clean the initial dataset (param: df) from coordinates, related to different cities with the same name in the same country,
+    This function cleans the initial dataset (param: df) from coordinates, related to different cities with the same name in the same country,
     with the help of subset dataframe (param: df_allocation),
     that contain information about each allocation (both country and city: ('Country', 'City') tuple, column "Allocation").
 
@@ -101,7 +101,7 @@ def recursion_func(df, df_allocation, precision=2):
 def city_location_check(df, precision=2):
 
     """
-    This function clean the initial dataset (param: df) from coordinates,
+    This function cleans the initial dataset (param: df) from coordinates,
     related to different cities with the same name
     by constructing the subset dataframe for each unique allocation found,
     (both country and city: ('Country', 'City') tuple, column "Allocation")
